@@ -1,0 +1,47 @@
+{
+  "handle": "hamodywe",
+  "github": "https://github.com/hamodywe",
+  "email": "iosapk.org@gmail.com",
+  "en": {
+    "name": "Hamody",
+    "role": "Open Source Engineer — developer tooling, CI/CD and AI agent infrastructure",
+    "tagline": "I build tools that find the failure nobody sees.",
+    "intro": "A test suite that reports green while half its files were never collected. A cache configured, saved on every run, and read on none. A deploy gate that quietly stopped being attached to anything. These do not throw errors — they report success. My work is a family of static analysers, each one built to catch a specific silent failure before it reaches production. Deterministic, offline by default, zero runtime dependencies.",
+    "availability": "Open to remote roles and contract work",
+    "sections": {
+      "work": "Work",
+      "contributions": "Upstream contributions",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "contributionsIntro": "Fixes sent to projects I use, each traced to a root cause in the source and covered by a test that fails without the change.",
+    "cta": "Get in touch"
+  },
+  "ar": {
+    "name": "حمودي",
+    "role": "مهندس برمجيات مفتوحة المصدر — أدوات المطورين، وأنظمة CI/CD، وبنية وكلاء الذكاء الاصطناعي",
+    "tagline": "أبني أدوات تكشف الأعطال التي لا يراها أحد.",
+    "intro": "مجموعة اختبارات تُظهر اللون الأخضر بينما نصف ملفاتها لم يُجمَّع أصلاً. ذاكرة تخزين مؤقت تُحفظ في كل تشغيل ولا تُقرأ في أي منها. بوابة نشر انفصلت بصمت عمّا كانت تحرسه. هذه الأعطال لا تُطلق أخطاءً — بل تُبلّغ بالنجاح. عملي عائلة من أدوات التحليل الساكن، كلٌّ منها مبنيّ لاصطياد عطل صامت محدد قبل أن يصل إلى الإنتاج. حتمية النتيجة، تعمل دون اتصال، وبلا أي اعتماديات تشغيل.",
+    "availability": "متاح للعمل عن بُعد والمشاريع التعاقدية",
+    "sections": {
+      "work": "الأعمال",
+      "contributions": "مساهمات في مشاريع عالمية",
+      "about": "نبذة",
+      "contact": "تواصل"
+    },
+    "contributionsIntro": "إصلاحات أرسلتها لمشاريع أستخدمها، كل واحد منها متتبَّع إلى سببه الجذري في الشيفرة ومغطّى باختبار يفشل بدونه.",
+    "cta": "تواصل معي"
+  },
+  "contributions": [
+    { "repo": "oxc-project/oxc", "pr": 25438, "stars": "22k", "en": "Fixed a permanent LSP deadlock when four diagnostic-refresh replies were outstanding", "ar": "إصلاح تجمّد دائم في خادم اللغة عند تعليق أربعة طلبات تحديث تشخيصات" },
+    { "repo": "pnpm/pnpm", "pr": 13733, "stars": "36k", "en": "audit signatures silently dropped unresolvable lockfile entries", "ar": "أمر تدقيق التواقيع كان يُسقط مدخلات ملف القفل غير القابلة للحل بصمت" },
+    { "repo": "semgrep/semgrep", "pr": 11843, "stars": "12k", "en": "Join-mode rules crashed on Windows on a temp-file permission error", "ar": "قواعد وضع الربط كانت تنهار على ويندوز بخطأ صلاحيات ملف مؤقت" },
+    { "repo": "sqlalchemy/sqlalchemy", "pr": 13487, "stars": "12k", "en": "A failed bulk call left the Session permanently wedged", "ar": "استدعاء جماعي فاشل كان يترك الجلسة معطّلة نهائياً" },
+    { "repo": "qdrant/qdrant", "pr": 10144, "stars": "24k", "en": "values_count counted an explicit JSON null as zero values", "ar": "عدّاد القيم كان يعتبر القيمة الفارغة الصريحة صفراً" },
+    { "repo": "weaviate/weaviate", "pr": 12580, "stars": "14k", "en": "Cluster middleware and gRPC routing were dropped when Sentry was enabled", "ar": "وسيط الكتلة وتوجيه gRPC كانا يسقطان عند تفعيل Sentry" },
+    { "repo": "gitleaks/gitleaks", "pr": 2235, "stars": "28k", "en": "Unreadable files were skipped while the scan still reported success", "ar": "الملفات غير المقروءة كانت تُتخطّى بينما يُبلّغ الفحص بالنجاح" },
+    { "repo": "nektos/act", "pr": 6156, "stars": "71k", "en": "Serialised a TOCTOU race between artifact cache upload and commit", "ar": "معالجة تسابق زمني بين رفع ذاكرة المخرجات وتثبيتها" },
+    { "repo": "anchore/grype", "pr": 3643, "stars": "13k", "en": "Amazon Linux false positives from a non-comprehensive feed check", "ar": "نتائج إيجابية خاطئة في أمازون لينكس بسبب فحص تغذية غير شامل" },
+    { "repo": "charmbracelet/glamour", "pr": 596, "stars": "4k", "en": "A tilde in a config-file style path was never expanded", "ar": "رمز المنزل في مسار النمط لم يكن يُوسَّع عند القراءة من ملف الإعدادات" }
+  ]
+}

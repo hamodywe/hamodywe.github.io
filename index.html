@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hamodywe — open source engineer</title>
+<meta name="description" content="Static analysers that find silent failures in CI, deploys, tests and AI agent tooling. Deterministic, offline, zero dependencies.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="hamodywe — open source engineer">
+<meta property="og:description" content="Tools that find the failure nobody sees.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231f5f4e'/><text x='16' y='23' font-size='19' font-family='monospace' font-weight='700' fill='%23fff' text-anchor='middle'>h</text></svg>">
+<script>
+  // Applied before paint so the correct theme and direction never flash.
+  (() => {
+    const t = localStorage.getItem('theme');
+    if (t) document.documentElement.dataset.theme = t;
+    const l = localStorage.getItem('lang') || (navigator.language || '').startsWith('ar') ? 'ar' : 'en';
+    const lang = localStorage.getItem('lang') || l;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  })();
+</script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="./"><span class="brand-mark">h</span><span>hamodywe</span></a>
+    <nav class="top-nav" aria-label="Sections">
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#contributions" data-i18n="nav.contributions">Contributions</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="chip" id="lang-toggle" type="button" aria-label="Switch language">العربية</button>
+      <button class="chip" id="theme-toggle" type="button" aria-label="Switch theme">◐</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero wrap">
+    <span class="hero-role" id="hero-role"></span>
+    <h1 id="hero-tagline"></h1>
+    <p id="hero-intro"></p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#work" data-i18n="cta.work">See the work</a>
+      <a class="btn btn-ghost" id="gh-link" href="https://github.com/hamodywe" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <section class="sec wrap" id="work">
+    <div class="sec-head">
+      <h2 data-i18n="nav.work">Work</h2>
+      <p data-i18n="work.intro">Each tool targets one silent failure. TypeScript, zero runtime dependencies, offline by default.</p>
+    </div>
+    <div class="filters">
+      <input type="search" id="q" autocomplete="off">
+      <div id="tags" role="group"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden data-i18n="work.empty">Nothing matches that filter.</p>
+  </section>
+
+  <section class="sec wrap" id="contributions">
+    <div class="sec-head">
+      <h2 data-i18n="nav.contributions">Contributions</h2>
+      <p id="contrib-intro"></p>
+    </div>
+    <div class="contrib-list" id="contrib-list"></div>
+  </section>
+
+  <section class="sec wrap" id="about">
+    <div class="sec-head"><h2 data-i18n="nav.about">About</h2></div>
+    <div class="prose" id="about-body"></div>
+  </section>
+
+  <section class="sec wrap" id="contact">
+    <div class="sec-head"><h2 data-i18n="nav.contact">Contact</h2></div>
+    <p class="prose" id="contact-line"></p>
+    <div class="contact-row">
+      <a class="btn btn-primary" id="mail-link" href="#"></a>
+      <a class="btn btn-ghost" href="https://github.com/hamodywe" target="_blank" rel="noopener">github.com/hamodywe</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span id="foot-left"></span>
+  <span><a href="admin.html" data-i18n="foot.dashboard">Dashboard</a></span>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

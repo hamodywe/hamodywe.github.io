@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard — hamodywe</title>
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231f5f4e'/><text x='16' y='23' font-size='19' font-family='monospace' font-weight='700' fill='%23fff' text-anchor='middle'>h</text></svg>">
+<script>
+  (() => {
+    const t = localStorage.getItem('theme');
+    if (t) document.documentElement.dataset.theme = t;
+    const lang = localStorage.getItem('lang') || ((navigator.language || '').startsWith('ar') ? 'ar' : 'en');
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  })();
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="./"><span class="brand-mark">h</span><span id="brand-label">Dashboard</span></a>
+    <div class="tools">
+      <a class="chip" href="./" id="back-link">← Site</a>
+      <button class="chip" id="lang-toggle" type="button">العربية</button>
+      <button class="chip" id="theme-toggle" type="button" aria-label="Switch theme">◐</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap sec">
+  <div class="sec-head">
+    <h2 id="dash-title">Projects</h2>
+    <p id="dash-sub"></p>
+  </div>
+
+  <p class="note" id="dash-note"></p>
+
+  <div class="admin-grid">
+    <section class="panel">
+      <h2 id="form-title">Add a project</h2>
+      <p id="form-sub"></p>
+
+      <form id="form" autocomplete="off">
+        <div class="field">
+          <label for="f-id" data-k="id">Repository name</label>
+          <!-- The hyphen is escaped: unescaped at the end of a class it is
+               invalid under the `v` regex mode browsers now use, which makes
+               the whole pattern attribute silently do nothing. -->
+          <input id="f-id" name="id" required pattern="[a-zA-Z0-9._\-]+">
+          <span class="hint" id="hint-id"></span>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-tests" data-k="tests">Tests</label>
+            <input id="f-tests" name="tests" type="number" min="0" step="1">
+          </div>
+          <div class="field">
+            <label for="f-featured" data-k="featured">Featured</label>
+            <select id="f-featured" name="featured">
+              <option value="false">no</option>
+              <option value="true">yes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-tags" data-k="tags">Tags</label>
+          <input id="f-tags" name="tags" placeholder="ci-cd, security, devops">
+          <span class="hint" id="hint-tags"></span>
+        </div>
+
+        <div class="field">
+          <label for="f-en-tag" data-k="enTagline">Tagline — English</label>
+          <input id="f-en-tag" name="enTagline" required>
+        </div>
+        <div class="field">
+          <label for="f-en-desc" data-k="enDesc">Description — English</label>
+          <textarea id="f-en-desc" name="enDesc" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="f-ar-tag" data-k="arTagline">العنوان — بالعربية</label>
+          <input id="f-ar-tag" name="arTagline" dir="rtl" required>
+        </div>
+        <div class="field">
+          <label for="f-ar-desc" data-k="arDesc">الوصف — بالعربية</label>
+          <textarea id="f-ar-desc" name="arDesc" dir="rtl" required></textarea>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" type="submit" id="btn-save">Save</button>
+          <button class="btn btn-ghost" type="button" id="btn-reset">Clear</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2 id="list-title">Current projects</h2>
+      <p id="list-sub"></p>
+      <div class="admin-list" id="list"></div>
+
+      <div class="hero-actions" style="margin-top:1.2rem">
+        <button class="btn btn-primary" type="button" id="btn-download">Download projects.json</button>
+        <button class="btn btn-ghost" type="button" id="btn-copy">Copy JSON</button>
+        <button class="btn btn-ghost" type="button" id="btn-revert">Revert</button>
+      </div>
+
+      <p class="field" style="margin-top:1.2rem">
+        <label for="out" id="out-label">Output</label>
+      </p>
+      <pre class="out" id="out"></pre>
+    </section>
+  </div>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="assets/js/admin.js"></script>
+</body>
+</html>

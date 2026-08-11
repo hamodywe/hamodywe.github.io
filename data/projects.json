@@ -1,0 +1,346 @@
+[
+  {
+    "id": "skillsonar",
+    "featured": true,
+    "tags": ["ai-agents", "static-analysis", "developer-tooling"],
+    "tests": 96,
+    "en": {
+      "tagline": "Find the collisions that stop AI agent skills from firing",
+      "description": "Agents route to a skill by its description alone. When eighty skills all mention \"security\", the router picks wrong and the skill you wrote never runs. skillsonar analyses the whole corpus at once and names the collisions — deterministically, offline, with no API budget."
+    },
+    "ar": {
+      "tagline": "اكتشف التصادمات التي تمنع مهارات وكلاء الذكاء الاصطناعي من العمل",
+      "description": "الوكيل يختار المهارة من وصفها وحده. وحين تذكر ثمانون مهارة كلمة «أمان»، يختار الموجّه خطأً ولا تعمل مهارتك أبداً. تحلّل الأداة المجموعة كاملة دفعة واحدة وتسمّي التصادمات — بنتيجة حتمية، دون اتصال، وبلا أي تكلفة استدعاءات."
+    }
+  },
+  {
+    "id": "promptfence",
+    "featured": true,
+    "tags": ["security", "ai-agents", "ci-cd"],
+    "tests": 79,
+    "en": {
+      "tagline": "Find where attacker-controlled text reaches an AI agent in CI",
+      "description": "An issue title is untrusted input. When a workflow pipes it into an agent's prompt, and that agent holds a write token, the injection is no longer theoretical. promptfence traces the path from outsider text to agent prompt and reports what the agent was allowed to do with it."
+    },
+    "ar": {
+      "tagline": "تتبّع المسار الذي يصل به نص غير موثوق إلى وكيل ذكاء اصطناعي داخل CI",
+      "description": "عنوان المشكلة مُدخَل غير موثوق. وحين يمرّره سير العمل إلى موجّه الوكيل، ويكون بيد الوكيل رمز كتابة، يتحوّل الحقن من احتمال إلى واقع. تتتبّع الأداة المسار من النص الخارجي إلى الموجّه، وتُظهر ما كان مسموحاً للوكيل أن يفعله به."
+    }
+  },
+  {
+    "id": "ciledger",
+    "featured": true,
+    "tags": ["ci-cd", "finops", "devops"],
+    "tests": 45,
+    "en": {
+      "tagline": "Price a GitHub Actions matrix before the invoice arrives",
+      "description": "A three-axis matrix reads as one job and bills as twenty-seven. ciledger expands every matrix, counts the billable minutes at the runner's real rate, and reports what a pull request adds to the monthly bill — as a check, before the merge."
+    },
+    "ar": {
+      "tagline": "احسب تكلفة مصفوفة GitHub Actions قبل وصول الفاتورة",
+      "description": "المصفوفة ثلاثية المحاور تُقرأ كمهمة واحدة وتُحاسَب كسبع وعشرين. توسّع الأداة كل مصفوفة، وتحسب الدقائق المدفوعة بسعر المشغّل الحقيقي، وتُظهر ما يضيفه طلب الدمج إلى فاتورة الشهر — كفحص، قبل الدمج."
+    }
+  },
+  {
+    "id": "scriptgate",
+    "featured": true,
+    "tags": ["supply-chain", "security", "node"],
+    "tests": 125,
+    "en": {
+      "tagline": "Triage npm install scripts for the v12 allowlist",
+      "description": "npm v12 stops running install scripts unless you allow them by name. Allowing all of them defeats the change; allowing none breaks native builds. scriptgate reads what each script actually does and tells you what denying it would cost."
+    },
+    "ar": {
+      "tagline": "افرز سكربتات تثبيت npm استعداداً لقائمة الإصدار 12",
+      "description": "الإصدار الثاني عشر من npm يتوقف عن تشغيل سكربتات التثبيت ما لم تسمح بها بالاسم. السماح للجميع يُبطل الغاية، والمنع الشامل يكسر البناء الأصلي. تقرأ الأداة ما يفعله كل سكربت فعلاً، وتخبرك بثمن منعه."
+    }
+  },
+  {
+    "id": "alwayspass",
+    "featured": true,
+    "tags": ["ai", "llm-evals", "testing"],
+    "tests": 57,
+    "en": {
+      "tagline": "Find LLM eval suites that cannot go red",
+      "description": "A model-graded assertion with no threshold records a pass even when the grader answers zero. The suite is green because it cannot be anything else. alwayspass finds every assertion in your eval config that has no way to fail."
+    },
+    "ar": {
+      "tagline": "اكتشف مجموعات تقييم النماذج التي لا يمكن أن تفشل",
+      "description": "التأكيد الذي يقيّمه نموذج بلا عتبة يُسجَّل ناجحاً حتى لو أعطى المقيِّم صفراً. المجموعة خضراء لأنها لا تستطيع أن تكون غير ذلك. تكشف الأداة كل تأكيد في إعداداتك لا يملك طريقاً إلى الفشل."
+    }
+  },
+  {
+    "id": "unenforced",
+    "featured": true,
+    "tags": ["ai", "tool-calling", "validation"],
+    "tests": 56,
+    "en": {
+      "tagline": "Find JSON Schema constraints no model provider checks",
+      "description": "You wrote format: email and pattern into your tool schema. Structured outputs enforce the shape, not the values — those keywords are documentation the model may ignore. unenforced marks every constraint standing exactly where validation should be."
+    },
+    "ar": {
+      "tagline": "اكتشف قيود المخطط التي لا يتحقق منها أي مزوّد نماذج",
+      "description": "كتبت format وpattern في مخطط أدواتك. المخرجات المهيكلة تفرض الشكل لا القيم — وتلك الكلمات المفتاحية توثيق قد يتجاهله النموذج. تُعلّم الأداة كل قيد يقف تماماً حيث يجب أن يكون تحقّق فعلي."
+    }
+  },
+  {
+    "id": "gatedrift",
+    "tags": ["ci-cd", "security", "github"],
+    "tests": 51,
+    "en": {
+      "tagline": "Find merge gates that quietly detached from their workflows",
+      "description": "Branch protection requires a check by name. Rename the job and the requirement still exists, matching nothing — pull requests merge green with the gate reporting on a check that never runs again."
+    },
+    "ar": {
+      "tagline": "اكتشف بوابات الدمج التي انفصلت بصمت عن سير العمل",
+      "description": "حماية الفرع تطلب فحصاً بالاسم. غيّر اسم المهمة ويبقى الشرط قائماً بلا ما يطابقه — فتُدمج الطلبات باللون الأخضر وبوابة تنتظر فحصاً لن يعمل مرة أخرى."
+    }
+  },
+  {
+    "id": "preempted",
+    "tags": ["ci-cd", "deploy-safety", "devops"],
+    "tests": 82,
+    "en": {
+      "tagline": "Find concurrency settings that cancel the deploy they protect",
+      "description": "cancel-in-progress is right for a test matrix and wrong for a deploy. A newer pending run also cancels the older one, silently dropping a release. preempted reads the group semantics and reports which of your workflows can eat their own deployment."
+    },
+    "ar": {
+      "tagline": "اكتشف إعدادات التزامن التي تُلغي عملية النشر التي جاءت لحمايتها",
+      "description": "إلغاء الجاري صحيح لمصفوفة اختبارات وخاطئ لعملية نشر. كما أن التشغيل المعلّق الأحدث يُلغي الأقدم، فيسقط إصدار كامل بصمت. تقرأ الأداة دلالات المجموعة وتُظهر أي سير عمل قادر على ابتلاع نشره."
+    }
+  },
+  {
+    "id": "swallowed",
+    "tags": ["ci-cd", "test-quality"],
+    "tests": 58,
+    "en": {
+      "tagline": "Find CI steps that verify something and cannot report it is wrong",
+      "description": "continue-on-error, a pipe without pipefail, a trailing || true. Each one runs the check and throws away its verdict. The step is green because nothing was listening."
+    },
+    "ar": {
+      "tagline": "اكتشف خطوات CI التي تتحقق من شيء ولا تستطيع الإبلاغ بخطئه",
+      "description": "متابعة عند الخطأ، أنبوب بلا pipefail، أو true في نهاية السطر. كلٌّ منها يُشغّل الفحص ثم يرمي نتيجته. الخطوة خضراء لأن أحداً لم يكن يصغي."
+    }
+  },
+  {
+    "id": "coldcache",
+    "tags": ["ci-cd", "performance", "devops"],
+    "tests": 79,
+    "en": {
+      "tagline": "Find CI caches that are saved every run and read on none",
+      "description": "A key that hashes a lockfile you do not have, a path your package manager never writes to, a restore key that prefixes nothing. The cache step succeeds every time and never once hits."
+    },
+    "ar": {
+      "tagline": "اكتشف ذواكر CI التي تُحفظ في كل تشغيل ولا تُقرأ في أي منها",
+      "description": "مفتاح يجزّئ ملف قفل لا تملكه، ومسار لا يكتب فيه مدير الحزم شيئاً، ومفتاح استعادة لا يسبق شيئاً. خطوة الذاكرة تنجح دائماً ولا تُصيب ولو مرة."
+    }
+  },
+  {
+    "id": "underbuilt",
+    "tags": ["monorepo", "ci-cd"],
+    "tests": 49,
+    "en": {
+      "tagline": "Find monorepo path filters that miss a dependency",
+      "description": "The filter lists the app's own directory. The change lands in a shared package the app imports, CI sees no match, and the release ships without ever running the tests that covered it."
+    },
+    "ar": {
+      "tagline": "اكتشف مرشّحات المسارات التي تُغفل اعتمادية في المستودع الموحّد",
+      "description": "المرشّح يذكر مجلد التطبيق وحده. والتغيير يقع في حزمة مشتركة يستوردها التطبيق، فلا يرى CI تطابقاً، ويُشحن الإصدار دون تشغيل الاختبارات التي كانت تغطيه."
+    }
+  },
+  {
+    "id": "ghosttest",
+    "tags": ["testing", "developer-tooling"],
+    "tests": 82,
+    "en": {
+      "tagline": "Count the tests you have, then the ones that actually run",
+      "description": "An ignore pattern matched against an absolute path, a stray .only, a file the runner never collected. The report says all passing because the missing ones were never counted."
+    },
+    "ar": {
+      "tagline": "احصِ اختباراتك، ثم احصِ ما يعمل منها فعلاً",
+      "description": "نمط تجاهل يُطابَق على مسار مطلق، و‏.only منسيّة، وملف لم يجمّعه المشغّل قط. التقرير يقول «الكل ناجح» لأن الغائبين لم يُحصوا أصلاً."
+    }
+  },
+  {
+    "id": "uncounted",
+    "tags": ["testing", "coverage"],
+    "tests": 80,
+    "en": {
+      "tagline": "Find the files your coverage report never counted",
+      "description": "A module no test imports is absent from the denominator, not sitting at zero percent. Coverage rises when you delete tests. uncounted restores the files that were quietly left out."
+    },
+    "ar": {
+      "tagline": "اكتشف الملفات التي لم يحسبها تقرير التغطية أصلاً",
+      "description": "الوحدة التي لا يستوردها أي اختبار غائبة عن المقام، لا واقفة عند صفر بالمئة. فترتفع النسبة حين تحذف اختبارات. تعيد الأداة الملفات التي أُسقطت بصمت."
+    }
+  },
+  {
+    "id": "aliascheck",
+    "tags": ["typescript", "developer-tooling"],
+    "tests": 74,
+    "en": {
+      "tagline": "Find TypeScript path aliases that survive the build",
+      "description": "tsc does not rewrite tsconfig paths when it emits. The import compiles cleanly and throws ERR_MODULE_NOT_FOUND at runtime. aliascheck reads the emitted output, so a finding is a line that will throw — not a risk score."
+    },
+    "ar": {
+      "tagline": "اكتشف مسارات TypeScript المختصرة التي تنجو من البناء",
+      "description": "المصرّف لا يُعيد كتابة المسارات المختصرة عند الإخراج. فيُصرَّف الاستيراد نظيفاً ثم يفشل عند التشغيل. تقرأ الأداة المخرجات المبنيّة نفسها، فالنتيجة سطر سيفشل قطعاً — لا تقدير احتمال."
+    }
+  },
+  {
+    "id": "unmapped",
+    "tags": ["observability", "security"],
+    "tests": 47,
+    "en": {
+      "tagline": "Check that shipped source maps symbolicate — and do not leak your source",
+      "description": "Two failures with one cause: a map that resolves nothing, so every production stack trace stays minified; and a map that resolves everything, publishing your source to whoever opens devtools."
+    },
+    "ar": {
+      "tagline": "تحقّق أن خرائط المصدر تعمل — وأنها لا تنشر شيفرتك",
+      "description": "عطلان بسبب واحد: خريطة لا تحلّ شيئاً فتبقى كل آثار الأخطاء في الإنتاج مضغوطة، وخريطة تحلّ كل شيء فتنشر شيفرتك لكل من يفتح أدوات المطوّر."
+    }
+  },
+  {
+    "id": "unshipped",
+    "tags": ["docker", "devops", "security"],
+    "tests": 80,
+    "en": {
+      "tagline": "Find what your Docker build context silently drops",
+      "description": "COPY succeeds while arriving short, because .dockerignore removed a file it needed. And the credential it did not remove is now in a layer."
+    },
+    "ar": {
+      "tagline": "اكتشف ما يُسقطه سياق بناء Docker بصمت",
+      "description": "أمر النسخ ينجح ناقصاً لأن ملف التجاهل أزال ما يحتاجه. أما بيانات الاعتماد التي لم يُزلها فصارت داخل طبقة الصورة."
+    }
+  },
+  {
+    "id": "contextleak",
+    "tags": ["docker", "supply-chain", "security"],
+    "tests": 108,
+    "en": {
+      "tagline": "Find files your Docker build ships without meaning to",
+      "description": ".dockerignore anchors every pattern to the context root and .gitignore does not. Rules that look identical behave differently, and the difference is what ends up inside your image."
+    },
+    "ar": {
+      "tagline": "اكتشف الملفات التي يشحنها بناء Docker دون قصد",
+      "description": "ملف تجاهل Docker يربط كل نمط بجذر السياق، وملف تجاهل git لا يفعل. فقاعدتان تبدوان متطابقتين تتصرفان تصرفاً مختلفاً — والفرق هو ما ينتهي داخل صورتك."
+    }
+  },
+  {
+    "id": "unpaged",
+    "tags": ["observability", "sre"],
+    "tests": 59,
+    "en": {
+      "tagline": "Find Prometheus alerts that reach nobody",
+      "description": "No route matches the alert's labels, so Alertmanager delivers it to a receiver that notifies nothing. The alert fires exactly as designed, into silence."
+    },
+    "ar": {
+      "tagline": "اكتشف تنبيهات Prometheus التي لا تصل إلى أحد",
+      "description": "لا مسار يطابق وسوم التنبيه، فيسلّمه Alertmanager إلى مستقبِل لا يُخطر أحداً. التنبيه ينطلق كما صُمّم تماماً — إلى الصمت."
+    }
+  },
+  {
+    "id": "unscaled",
+    "tags": ["kubernetes", "sre", "devops"],
+    "tests": 59,
+    "en": {
+      "tagline": "Find autoscalers that will never add a pod",
+      "description": "An HPA whose target declares no CPU request has nothing to compute a percentage from. A ScaledObject points at a workload that was renamed. A replicas field fights the autoscaler on every sync."
+    },
+    "ar": {
+      "tagline": "اكتشف مُوسِّعات Kubernetes التي لن تضيف حاوية أبداً",
+      "description": "مُوسِّع أفقي هدفه لا يعلن طلب معالج، فلا شيء يُحسب منه نسبة. وكائن توسيع يشير إلى حِمل غُيّر اسمه. وحقل نسخ يصارع المُوسِّع في كل مزامنة."
+    }
+  },
+  {
+    "id": "novalue",
+    "tags": ["kubernetes", "helm", "devops"],
+    "tests": 63,
+    "en": {
+      "tagline": "Find Helm values that render as nothing",
+      "description": "A template reads .Values.image.tag, no values file defines it, and Helm renders an empty string rather than failing. The chart installs and the container points at nothing."
+    },
+    "ar": {
+      "tagline": "اكتشف قيم Helm التي تُصيَّر إلى لا شيء",
+      "description": "القالب يقرأ قيمة لا يُعرّفها أي ملف، فيُصيّرها Helm نصاً فارغاً بدل أن يفشل. تُثبَّت الحزمة وتشير الحاوية إلى لا شيء."
+    }
+  },
+  {
+    "id": "deindexed",
+    "tags": ["seo", "deploy-safety"],
+    "tests": 52,
+    "en": {
+      "tagline": "Catch the noindex that shipped to production",
+      "description": "A staging robots rule, a stray meta tag, a canonical pointing at the preview domain. The site is live, fast, and invisible to search — and the traffic graph tells you weeks later."
+    },
+    "ar": {
+      "tagline": "اصطد وسم منع الفهرسة قبل أن يصل إلى الإنتاج",
+      "description": "قاعدة روبوتات من بيئة التجريب، ووسم منسيّ، ورابط أساسي يشير إلى نطاق المعاينة. الموقع يعمل وسريع وغير مرئي للبحث — ويخبرك منحنى الزيارات بعد أسابيع."
+    }
+  },
+  {
+    "id": "shadowroute",
+    "tags": ["static-hosting", "deploy-safety"],
+    "tests": 58,
+    "en": {
+      "tagline": "Find redirect rules that can never fire",
+      "description": "An earlier catch-all shadows the rule below it, or a real file in the build takes the path first. The rule is in your config, reviewed and merged, and unreachable."
+    },
+    "ar": {
+      "tagline": "اكتشف قواعد إعادة التوجيه التي لا يمكن أن تعمل",
+      "description": "قاعدة شاملة سابقة تحجب ما تحتها، أو ملف حقيقي في البناء يسبقها إلى المسار. القاعدة موجودة في إعداداتك، مُراجَعة ومدموجة، وغير قابلة للوصول."
+    }
+  },
+  {
+    "id": "hardrefresh",
+    "tags": ["deploy-safety", "web-performance"],
+    "tests": 71,
+    "en": {
+      "tagline": "Find the cache headers that pin visitors to an old build",
+      "description": "A cached index.html and a service worker that outlives it. You deployed; they did not. This is the tool behind every \"did you deploy? I still see the old version\"."
+    },
+    "ar": {
+      "tagline": "اكتشف ترويسات التخزين التي تُبقي الزوار على بناء قديم",
+      "description": "صفحة رئيسية مخزّنة، وعامل خدمة يعمّر أطول منها. أنت نشرت، وهم لم يروا. هذه الأداة وراء كل سؤال: «هل نشرت؟ ما زلت أرى القديم»."
+    }
+  },
+  {
+    "id": "unfinished",
+    "tags": ["ai", "llm", "reliability"],
+    "tests": 73,
+    "en": {
+      "tagline": "Find LLM calls that use the answer without checking it finished",
+      "description": "The model hit its token limit mid-sentence and returned what it had. Your code reads .content and moves on. It looks like a flaky model and bills like a retry loop."
+    },
+    "ar": {
+      "tagline": "اكتشف استدعاءات النماذج التي تستخدم الجواب دون التحقق من اكتماله",
+      "description": "بلغ النموذج حدّ الرموز في منتصف الجملة وأعاد ما لديه. وشيفرتك تقرأ المحتوى وتمضي. يبدو الأمر نموذجاً متقلباً، ويُحاسَب كحلقة إعادة محاولة."
+    }
+  },
+  {
+    "id": "unapplied",
+    "tags": ["npm", "supply-chain", "security"],
+    "tests": 98,
+    "en": {
+      "tagline": "Check that your dependency overrides actually took effect",
+      "description": "You pinned a CVE fix in overrides. The selector matched nothing, the lockfile kept the vulnerable version, and the audit you ran afterwards read the manifest you wrote rather than the tree you installed."
+    },
+    "ar": {
+      "tagline": "تحقّق أن تجاوزات الاعتماديات التي كتبتها نفذت فعلاً",
+      "description": "ثبّتّ إصلاح ثغرة في التجاوزات. لم يطابق المحدِّد شيئاً، واحتفظ ملف القفل بالنسخة المصابة، وقرأ التدقيق ما كتبتَه لا ما ثُبِّت فعلاً."
+    }
+  },
+  {
+    "id": "uncloneable",
+    "tags": ["git", "developer-experience"],
+    "tests": 50,
+    "en": {
+      "tagline": "Find files somebody on your team cannot check out",
+      "description": "Two files differing only in case, a directory named aux, a colon in a filename. They clone fine on the machine that committed them and fail on every other one."
+    },
+    "ar": {
+      "tagline": "اكتشف الملفات التي لا يستطيع أحد أعضاء فريقك سحبها",
+      "description": "ملفان لا يختلفان إلا في حالة الأحرف، ومجلد باسم محجوز، ونقطتان في اسم ملف. تُستنسخ بلا مشكلة على الجهاز الذي أرسلها، وتفشل على كل جهاز سواه."
+    }
+  }
+]
