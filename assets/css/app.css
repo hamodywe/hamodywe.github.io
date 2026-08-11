@@ -372,3 +372,23 @@ html[dir='rtl'] .page-head h1 { letter-spacing: 0; }
 .contrib-card .contrib-what { margin: 0; color: var(--ink-soft); font-size: 0.88rem; line-height: 1.6; text-wrap: pretty; }
 html[dir='rtl'] .contrib-card .contrib-what { line-height: 1.9; }
 .contrib-card .card-meta { margin-top: auto; }
+
+/* ---------- kind ---------- */
+
+.kind {
+  font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 650;
+  padding: 0.18rem 0.45rem; border-radius: 5px; white-space: nowrap;
+  color: var(--accent-ink); background: var(--accent-soft);
+}
+.kind-handbook { color: var(--warn); background: color-mix(in srgb, var(--warn) 14%, transparent); }
+.kind-app { color: var(--ink-soft); background: var(--bg-sunken); }
+.kind-list { color: var(--ink-faint); background: var(--bg-sunken); }
+
+.kinds { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.9rem; }
+.kind-btn {
+  border: 1px solid var(--line); background: var(--bg-raised); color: var(--ink-soft);
+  border-radius: var(--radius-sm); padding: 0.4rem 0.85rem; font: inherit; font-size: 0.88rem;
+  font-weight: 550; cursor: pointer; transition: all 0.15s;
+}
+.kind-btn:hover { color: var(--ink); border-color: var(--ink-faint); }
+.kind-btn[aria-pressed='true'] { background: var(--accent); border-color: var(--accent); color: var(--bg); }

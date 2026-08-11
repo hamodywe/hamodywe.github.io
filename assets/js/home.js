@@ -29,7 +29,7 @@ function setHeadline(node, text) {
 function renderStats() {
   const tests = state.projects.reduce((n, p) => n + (p.tests || 0), 0);
   const rows = [
-    [state.projects.length, t('stat.projects')],
+    [state.projects.length, t('stat.repos.own')],
     [tests, t('stat.tests')],
     [state.contributions.length, t('stat.fixes')],
     [new Set(state.contributions.map((c) => c.repo)).size, t('stat.repos')],
@@ -82,7 +82,7 @@ function renderPage() {
   $('#hero-intro').textContent = s.intro;
 
   $('#featured-title').textContent = t('home.selected');
-  $('#featured-sub').textContent = t('home.selectedSub');
+  $('#featured-sub').textContent = t('home.selectedSub2');
   $('#all-tools').textContent = t('home.allTools');
 
   $('#contrib-title').textContent = s.sections.contributions;

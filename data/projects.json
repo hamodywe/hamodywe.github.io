@@ -1,8 +1,212 @@
 [
   {
+    "id": "telegram-scraper-TeleGraphite",
+    "kind": "app",
+    "featured": true,
+    "tags": [
+      "python",
+      "scraping",
+      "telegram",
+      "osint"
+    ],
+    "en": {
+      "tagline": "A fast, reliable Telegram channel scraper",
+      "description": "Fetches posts from public Telegram channels and exports them to JSON, built for people who need the archive rather than the app. The most used thing I have written — 276 stars and 25 forks."
+    },
+    "ar": {
+      "tagline": "أداة سريعة وموثوقة لسحب محتوى قنوات تلغرام",
+      "description": "تجلب المنشورات من القنوات العامة وتصدّرها إلى JSON، مبنية لمن يحتاج الأرشيف لا التطبيق. أكثر ما كتبته استخداماً — 276 نجمة و25 نسخة معدَّلة."
+    }
+  },
+  {
+    "id": "ClaudeCode-Mastery-Handbook",
+    "kind": "handbook",
+    "featured": true,
+    "tags": [
+      "ai-agents",
+      "claude-code",
+      "handbook",
+      "workflows"
+    ],
+    "en": {
+      "tagline": "A developer's handbook for working with Claude Code",
+      "description": "Agent-driven development written down properly: real workflows, planning with PLAN.md and PROGRESS.md, and the habits that separate a session that ships from one that wanders. 85 stars."
+    },
+    "ar": {
+      "tagline": "دليل المطوّر للعمل مع Claude Code",
+      "description": "التطوير بقيادة الوكلاء موثَّقاً كما ينبغي: سير عمل حقيقي، وتخطيط عبر PLAN.md وPROGRESS.md، والعادات التي تفصل جلسة تُنتج عن جلسة تتوه. 85 نجمة."
+    }
+  },
+  {
+    "id": "antigravity-mastery-handbook",
+    "kind": "handbook",
+    "tags": [
+      "ai-agents",
+      "handbook",
+      "google",
+      "agentic"
+    ],
+    "en": {
+      "tagline": "A guide to Google Antigravity, the agentic development platform",
+      "description": "Concepts, capabilities, comparisons against the alternatives, and where it actually fits in a real workflow rather than a demo."
+    },
+    "ar": {
+      "tagline": "دليل إلى Google Antigravity، منصة التطوير بالوكلاء",
+      "description": "المفاهيم والقدرات والمقارنة بالبدائل، وأين تصلح فعلاً داخل سير عمل حقيقي لا في عرض تجريبي."
+    }
+  },
+  {
+    "id": "Cursor-Windsurf-Mastery-Handbook",
+    "kind": "handbook",
+    "tags": [
+      "ai-agents",
+      "handbook",
+      "cursor",
+      "productivity"
+    ],
+    "en": {
+      "tagline": "Production-grade AI-assisted development with Cursor and Windsurf",
+      "description": "Token budgets, memory management, secure coding, large-scale refactoring and team workflows — the parts that matter once the novelty wears off and the codebase is real."
+    },
+    "ar": {
+      "tagline": "التطوير الاحترافي بمساعدة الذكاء الاصطناعي عبر Cursor وWindsurf",
+      "description": "ميزانيات الرموز، وإدارة الذاكرة، والبرمجة الآمنة، وإعادة الهيكلة واسعة النطاق، والعمل الجماعي — الأجزاء التي تهمّ بعد أن تزول جِدّة الأداة وتصير الشيفرة حقيقية."
+    }
+  },
+  {
+    "id": "Ai-Cybersecurity-Mastery-Handbook",
+    "kind": "handbook",
+    "tags": [
+      "security",
+      "ai",
+      "handbook",
+      "soc"
+    ],
+    "en": {
+      "tagline": "Applying AI across the cybersecurity stack",
+      "description": "Threat detection, incident response, malware analysis, SOC automation and both offensive and defensive intelligence — where the models help, and where they quietly do not."
+    },
+    "ar": {
+      "tagline": "تطبيق الذكاء الاصطناعي عبر مجالات الأمن السيبراني",
+      "description": "كشف التهديدات، والاستجابة للحوادث، وتحليل البرمجيات الخبيثة، وأتمتة مراكز العمليات، والاستخبارات الهجومية والدفاعية — أين تنفع النماذج، وأين لا تنفع بصمت."
+    }
+  },
+  {
+    "id": "Practical-RAG-Systems-Handbook",
+    "kind": "handbook",
+    "tags": [
+      "ai",
+      "rag",
+      "handbook",
+      "retrieval"
+    ],
+    "en": {
+      "tagline": "Building retrieval systems that hold up outside a demo",
+      "description": "Chunking, embeddings, retrieval quality and evaluation — written around the failures that only appear once the corpus is large and the questions are real."
+    },
+    "ar": {
+      "tagline": "بناء أنظمة استرجاع تصمد خارج العرض التجريبي",
+      "description": "التقطيع، والتمثيلات، وجودة الاسترجاع والتقييم — مكتوب حول الأعطال التي لا تظهر إلا حين يكبر المحتوى وتصير الأسئلة حقيقية."
+    }
+  },
+  {
+    "id": "Prompt-Engineering-Mastery-Handbook",
+    "kind": "handbook",
+    "tags": [
+      "ai",
+      "prompt-engineering",
+      "handbook",
+      "llm"
+    ],
+    "en": {
+      "tagline": "Designing prompts that stay reliable",
+      "description": "Structure, constraints, evaluation and failure modes — treating a prompt as an interface with a contract rather than a lucky sentence."
+    },
+    "ar": {
+      "tagline": "تصميم موجّهات تبقى موثوقة",
+      "description": "البنية والقيود والتقييم وأنماط الفشل — بمعاملة الموجّه كواجهة لها عقد، لا كجملة محظوظة."
+    }
+  },
+  {
+    "id": "awesome-scrape-free-apis",
+    "kind": "list",
+    "tags": [
+      "awesome-list",
+      "apis",
+      "scraping",
+      "curated"
+    ],
+    "en": {
+      "tagline": "A curated list of free scraping and utility APIs",
+      "description": "Web scraping, social media and utility endpoints worth knowing about, kept short on purpose — a list nobody trims is a list nobody reads."
+    },
+    "ar": {
+      "tagline": "قائمة منتقاة لواجهات برمجية مجانية للسحب والاستخدام العام",
+      "description": "واجهات لسحب الويب ووسائل التواصل وأدوات عامة تستحق المعرفة، مُبقاة قصيرة عن قصد — فالقائمة التي لا تُنقَّح لا يقرأها أحد."
+    }
+  },
+  {
+    "id": "devprompter",
+    "kind": "app",
+    "tags": [
+      "ai",
+      "typescript",
+      "prompt-engineering",
+      "developer-tooling"
+    ],
+    "en": {
+      "tagline": "A prompt generator for developers",
+      "description": "Turns a rough intent — build this app, debug this failure — into a prompt with the structure and context a model actually needs."
+    },
+    "ar": {
+      "tagline": "مولّد موجّهات للمطورين",
+      "description": "يحوّل نيّة خامّة — ابنِ هذا التطبيق، صحّح هذا العطل — إلى موجّه بالبنية والسياق الذي يحتاجه النموذج فعلاً."
+    }
+  },
+  {
+    "id": "Visual-Prompt-Craft",
+    "kind": "app",
+    "tags": [
+      "ai",
+      "typescript",
+      "clip",
+      "vision"
+    ],
+    "en": {
+      "tagline": "A toolkit for visual prompting with CLIP and ViT",
+      "description": "Composing and testing visual prompts against vision models, so the iteration loop is a tool rather than a notebook."
+    },
+    "ar": {
+      "tagline": "عُدّة للموجّهات البصرية باستخدام CLIP وViT",
+      "description": "تركيب الموجّهات البصرية واختبارها على نماذج الرؤية، فتصير دورة التجريب أداةً لا دفتر ملاحظات."
+    }
+  },
+  {
+    "id": "CacheSheet",
+    "kind": "app",
+    "tags": [
+      "go",
+      "api",
+      "caching",
+      "backend"
+    ],
+    "en": {
+      "tagline": "Turn a spreadsheet into a fast, cached REST API",
+      "description": "Points at Google Sheets or Airtable and serves it as an API with caching in front — the shortest path from a sheet somebody already maintains to an MVP."
+    },
+    "ar": {
+      "tagline": "حوّل جدول بيانات إلى واجهة REST سريعة ومخزَّنة",
+      "description": "يوجَّه إلى Google Sheets أو Airtable ويقدّمه كواجهة برمجية بذاكرة تخزين أمامها — أقصر طريق من جدول يديره أحدهم أصلاً إلى منتج أولي."
+    }
+  },
+  {
     "id": "skillsonar",
     "featured": true,
-    "tags": ["ai-agents", "static-analysis", "developer-tooling"],
+    "tags": [
+      "ai-agents",
+      "static-analysis",
+      "developer-tooling"
+    ],
     "tests": 96,
     "en": {
       "tagline": "Find the collisions that stop AI agent skills from firing",
@@ -11,12 +215,17 @@
     "ar": {
       "tagline": "اكتشف التصادمات التي تمنع مهارات وكلاء الذكاء الاصطناعي من العمل",
       "description": "الوكيل يختار المهارة من وصفها وحده. وحين تذكر ثمانون مهارة كلمة «أمان»، يختار الموجّه خطأً ولا تعمل مهارتك أبداً. تحلّل الأداة المجموعة كاملة دفعة واحدة وتسمّي التصادمات — بنتيجة حتمية، دون اتصال، وبلا أي تكلفة استدعاءات."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "promptfence",
     "featured": true,
-    "tags": ["security", "ai-agents", "ci-cd"],
+    "tags": [
+      "security",
+      "ai-agents",
+      "ci-cd"
+    ],
     "tests": 79,
     "en": {
       "tagline": "Find where attacker-controlled text reaches an AI agent in CI",
@@ -25,12 +234,17 @@
     "ar": {
       "tagline": "تتبّع المسار الذي يصل به نص غير موثوق إلى وكيل ذكاء اصطناعي داخل CI",
       "description": "عنوان المشكلة مُدخَل غير موثوق. وحين يمرّره سير العمل إلى موجّه الوكيل، ويكون بيد الوكيل رمز كتابة، يتحوّل الحقن من احتمال إلى واقع. تتتبّع الأداة المسار من النص الخارجي إلى الموجّه، وتُظهر ما كان مسموحاً للوكيل أن يفعله به."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "ciledger",
     "featured": true,
-    "tags": ["ci-cd", "finops", "devops"],
+    "tags": [
+      "ci-cd",
+      "finops",
+      "devops"
+    ],
     "tests": 45,
     "en": {
       "tagline": "Price a GitHub Actions matrix before the invoice arrives",
@@ -39,12 +253,17 @@
     "ar": {
       "tagline": "احسب تكلفة مصفوفة GitHub Actions قبل وصول الفاتورة",
       "description": "المصفوفة ثلاثية المحاور تُقرأ كمهمة واحدة وتُحاسَب كسبع وعشرين. توسّع الأداة كل مصفوفة، وتحسب الدقائق المدفوعة بسعر المشغّل الحقيقي، وتُظهر ما يضيفه طلب الدمج إلى فاتورة الشهر — كفحص، قبل الدمج."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "scriptgate",
     "featured": true,
-    "tags": ["supply-chain", "security", "node"],
+    "tags": [
+      "supply-chain",
+      "security",
+      "node"
+    ],
     "tests": 125,
     "en": {
       "tagline": "Triage npm install scripts for the v12 allowlist",
@@ -53,12 +272,17 @@
     "ar": {
       "tagline": "افرز سكربتات تثبيت npm استعداداً لقائمة الإصدار 12",
       "description": "الإصدار الثاني عشر من npm يتوقف عن تشغيل سكربتات التثبيت ما لم تسمح بها بالاسم. السماح للجميع يُبطل الغاية، والمنع الشامل يكسر البناء الأصلي. تقرأ الأداة ما يفعله كل سكربت فعلاً، وتخبرك بثمن منعه."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "alwayspass",
     "featured": true,
-    "tags": ["ai", "llm-evals", "testing"],
+    "tags": [
+      "ai",
+      "llm-evals",
+      "testing"
+    ],
     "tests": 57,
     "en": {
       "tagline": "Find LLM eval suites that cannot go red",
@@ -67,12 +291,17 @@
     "ar": {
       "tagline": "اكتشف مجموعات تقييم النماذج التي لا يمكن أن تفشل",
       "description": "التأكيد الذي يقيّمه نموذج بلا عتبة يُسجَّل ناجحاً حتى لو أعطى المقيِّم صفراً. المجموعة خضراء لأنها لا تستطيع أن تكون غير ذلك. تكشف الأداة كل تأكيد في إعداداتك لا يملك طريقاً إلى الفشل."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "unenforced",
     "featured": true,
-    "tags": ["ai", "tool-calling", "validation"],
+    "tags": [
+      "ai",
+      "tool-calling",
+      "validation"
+    ],
     "tests": 56,
     "en": {
       "tagline": "Find JSON Schema constraints no model provider checks",
@@ -81,11 +310,16 @@
     "ar": {
       "tagline": "اكتشف قيود المخطط التي لا يتحقق منها أي مزوّد نماذج",
       "description": "كتبت format وpattern في مخطط أدواتك. المخرجات المهيكلة تفرض الشكل لا القيم — وتلك الكلمات المفتاحية توثيق قد يتجاهله النموذج. تُعلّم الأداة كل قيد يقف تماماً حيث يجب أن يكون تحقّق فعلي."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "gatedrift",
-    "tags": ["ci-cd", "security", "github"],
+    "tags": [
+      "ci-cd",
+      "security",
+      "github"
+    ],
     "tests": 51,
     "en": {
       "tagline": "Find merge gates that quietly detached from their workflows",
@@ -94,11 +328,16 @@
     "ar": {
       "tagline": "اكتشف بوابات الدمج التي انفصلت بصمت عن سير العمل",
       "description": "حماية الفرع تطلب فحصاً بالاسم. غيّر اسم المهمة ويبقى الشرط قائماً بلا ما يطابقه — فتُدمج الطلبات باللون الأخضر وبوابة تنتظر فحصاً لن يعمل مرة أخرى."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "preempted",
-    "tags": ["ci-cd", "deploy-safety", "devops"],
+    "tags": [
+      "ci-cd",
+      "deploy-safety",
+      "devops"
+    ],
     "tests": 82,
     "en": {
       "tagline": "Find concurrency settings that cancel the deploy they protect",
@@ -107,11 +346,15 @@
     "ar": {
       "tagline": "اكتشف إعدادات التزامن التي تُلغي عملية النشر التي جاءت لحمايتها",
       "description": "إلغاء الجاري صحيح لمصفوفة اختبارات وخاطئ لعملية نشر. كما أن التشغيل المعلّق الأحدث يُلغي الأقدم، فيسقط إصدار كامل بصمت. تقرأ الأداة دلالات المجموعة وتُظهر أي سير عمل قادر على ابتلاع نشره."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "swallowed",
-    "tags": ["ci-cd", "test-quality"],
+    "tags": [
+      "ci-cd",
+      "test-quality"
+    ],
     "tests": 58,
     "en": {
       "tagline": "Find CI steps that verify something and cannot report it is wrong",
@@ -120,11 +363,16 @@
     "ar": {
       "tagline": "اكتشف خطوات CI التي تتحقق من شيء ولا تستطيع الإبلاغ بخطئه",
       "description": "متابعة عند الخطأ، أنبوب بلا pipefail، أو true في نهاية السطر. كلٌّ منها يُشغّل الفحص ثم يرمي نتيجته. الخطوة خضراء لأن أحداً لم يكن يصغي."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "coldcache",
-    "tags": ["ci-cd", "performance", "devops"],
+    "tags": [
+      "ci-cd",
+      "performance",
+      "devops"
+    ],
     "tests": 79,
     "en": {
       "tagline": "Find CI caches that are saved every run and read on none",
@@ -133,11 +381,15 @@
     "ar": {
       "tagline": "اكتشف ذواكر CI التي تُحفظ في كل تشغيل ولا تُقرأ في أي منها",
       "description": "مفتاح يجزّئ ملف قفل لا تملكه، ومسار لا يكتب فيه مدير الحزم شيئاً، ومفتاح استعادة لا يسبق شيئاً. خطوة الذاكرة تنجح دائماً ولا تُصيب ولو مرة."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "underbuilt",
-    "tags": ["monorepo", "ci-cd"],
+    "tags": [
+      "monorepo",
+      "ci-cd"
+    ],
     "tests": 49,
     "en": {
       "tagline": "Find monorepo path filters that miss a dependency",
@@ -146,11 +398,15 @@
     "ar": {
       "tagline": "اكتشف مرشّحات المسارات التي تُغفل اعتمادية في المستودع الموحّد",
       "description": "المرشّح يذكر مجلد التطبيق وحده. والتغيير يقع في حزمة مشتركة يستوردها التطبيق، فلا يرى CI تطابقاً، ويُشحن الإصدار دون تشغيل الاختبارات التي كانت تغطيه."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "ghosttest",
-    "tags": ["testing", "developer-tooling"],
+    "tags": [
+      "testing",
+      "developer-tooling"
+    ],
     "tests": 82,
     "en": {
       "tagline": "Count the tests you have, then the ones that actually run",
@@ -159,11 +415,15 @@
     "ar": {
       "tagline": "احصِ اختباراتك، ثم احصِ ما يعمل منها فعلاً",
       "description": "نمط تجاهل يُطابَق على مسار مطلق، و‏.only منسيّة، وملف لم يجمّعه المشغّل قط. التقرير يقول «الكل ناجح» لأن الغائبين لم يُحصوا أصلاً."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "uncounted",
-    "tags": ["testing", "coverage"],
+    "tags": [
+      "testing",
+      "coverage"
+    ],
     "tests": 80,
     "en": {
       "tagline": "Find the files your coverage report never counted",
@@ -172,11 +432,15 @@
     "ar": {
       "tagline": "اكتشف الملفات التي لم يحسبها تقرير التغطية أصلاً",
       "description": "الوحدة التي لا يستوردها أي اختبار غائبة عن المقام، لا واقفة عند صفر بالمئة. فترتفع النسبة حين تحذف اختبارات. تعيد الأداة الملفات التي أُسقطت بصمت."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "aliascheck",
-    "tags": ["typescript", "developer-tooling"],
+    "tags": [
+      "typescript",
+      "developer-tooling"
+    ],
     "tests": 74,
     "en": {
       "tagline": "Find TypeScript path aliases that survive the build",
@@ -185,11 +449,15 @@
     "ar": {
       "tagline": "اكتشف مسارات TypeScript المختصرة التي تنجو من البناء",
       "description": "المصرّف لا يُعيد كتابة المسارات المختصرة عند الإخراج. فيُصرَّف الاستيراد نظيفاً ثم يفشل عند التشغيل. تقرأ الأداة المخرجات المبنيّة نفسها، فالنتيجة سطر سيفشل قطعاً — لا تقدير احتمال."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "unmapped",
-    "tags": ["observability", "security"],
+    "tags": [
+      "observability",
+      "security"
+    ],
     "tests": 47,
     "en": {
       "tagline": "Check that shipped source maps symbolicate — and do not leak your source",
@@ -198,11 +466,16 @@
     "ar": {
       "tagline": "تحقّق أن خرائط المصدر تعمل — وأنها لا تنشر شيفرتك",
       "description": "عطلان بسبب واحد: خريطة لا تحلّ شيئاً فتبقى كل آثار الأخطاء في الإنتاج مضغوطة، وخريطة تحلّ كل شيء فتنشر شيفرتك لكل من يفتح أدوات المطوّر."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "unshipped",
-    "tags": ["docker", "devops", "security"],
+    "tags": [
+      "docker",
+      "devops",
+      "security"
+    ],
     "tests": 80,
     "en": {
       "tagline": "Find what your Docker build context silently drops",
@@ -211,11 +484,16 @@
     "ar": {
       "tagline": "اكتشف ما يُسقطه سياق بناء Docker بصمت",
       "description": "أمر النسخ ينجح ناقصاً لأن ملف التجاهل أزال ما يحتاجه. أما بيانات الاعتماد التي لم يُزلها فصارت داخل طبقة الصورة."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "contextleak",
-    "tags": ["docker", "supply-chain", "security"],
+    "tags": [
+      "docker",
+      "supply-chain",
+      "security"
+    ],
     "tests": 108,
     "en": {
       "tagline": "Find files your Docker build ships without meaning to",
@@ -224,11 +502,15 @@
     "ar": {
       "tagline": "اكتشف الملفات التي يشحنها بناء Docker دون قصد",
       "description": "ملف تجاهل Docker يربط كل نمط بجذر السياق، وملف تجاهل git لا يفعل. فقاعدتان تبدوان متطابقتين تتصرفان تصرفاً مختلفاً — والفرق هو ما ينتهي داخل صورتك."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "unpaged",
-    "tags": ["observability", "sre"],
+    "tags": [
+      "observability",
+      "sre"
+    ],
     "tests": 59,
     "en": {
       "tagline": "Find Prometheus alerts that reach nobody",
@@ -237,11 +519,16 @@
     "ar": {
       "tagline": "اكتشف تنبيهات Prometheus التي لا تصل إلى أحد",
       "description": "لا مسار يطابق وسوم التنبيه، فيسلّمه Alertmanager إلى مستقبِل لا يُخطر أحداً. التنبيه ينطلق كما صُمّم تماماً — إلى الصمت."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "unscaled",
-    "tags": ["kubernetes", "sre", "devops"],
+    "tags": [
+      "kubernetes",
+      "sre",
+      "devops"
+    ],
     "tests": 59,
     "en": {
       "tagline": "Find autoscalers that will never add a pod",
@@ -250,11 +537,16 @@
     "ar": {
       "tagline": "اكتشف مُوسِّعات Kubernetes التي لن تضيف حاوية أبداً",
       "description": "مُوسِّع أفقي هدفه لا يعلن طلب معالج، فلا شيء يُحسب منه نسبة. وكائن توسيع يشير إلى حِمل غُيّر اسمه. وحقل نسخ يصارع المُوسِّع في كل مزامنة."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "novalue",
-    "tags": ["kubernetes", "helm", "devops"],
+    "tags": [
+      "kubernetes",
+      "helm",
+      "devops"
+    ],
     "tests": 63,
     "en": {
       "tagline": "Find Helm values that render as nothing",
@@ -263,11 +555,15 @@
     "ar": {
       "tagline": "اكتشف قيم Helm التي تُصيَّر إلى لا شيء",
       "description": "القالب يقرأ قيمة لا يُعرّفها أي ملف، فيُصيّرها Helm نصاً فارغاً بدل أن يفشل. تُثبَّت الحزمة وتشير الحاوية إلى لا شيء."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "deindexed",
-    "tags": ["seo", "deploy-safety"],
+    "tags": [
+      "seo",
+      "deploy-safety"
+    ],
     "tests": 52,
     "en": {
       "tagline": "Catch the noindex that shipped to production",
@@ -276,11 +572,15 @@
     "ar": {
       "tagline": "اصطد وسم منع الفهرسة قبل أن يصل إلى الإنتاج",
       "description": "قاعدة روبوتات من بيئة التجريب، ووسم منسيّ، ورابط أساسي يشير إلى نطاق المعاينة. الموقع يعمل وسريع وغير مرئي للبحث — ويخبرك منحنى الزيارات بعد أسابيع."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "shadowroute",
-    "tags": ["static-hosting", "deploy-safety"],
+    "tags": [
+      "static-hosting",
+      "deploy-safety"
+    ],
     "tests": 58,
     "en": {
       "tagline": "Find redirect rules that can never fire",
@@ -289,11 +589,15 @@
     "ar": {
       "tagline": "اكتشف قواعد إعادة التوجيه التي لا يمكن أن تعمل",
       "description": "قاعدة شاملة سابقة تحجب ما تحتها، أو ملف حقيقي في البناء يسبقها إلى المسار. القاعدة موجودة في إعداداتك، مُراجَعة ومدموجة، وغير قابلة للوصول."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "hardrefresh",
-    "tags": ["deploy-safety", "web-performance"],
+    "tags": [
+      "deploy-safety",
+      "web-performance"
+    ],
     "tests": 71,
     "en": {
       "tagline": "Find the cache headers that pin visitors to an old build",
@@ -302,11 +606,16 @@
     "ar": {
       "tagline": "اكتشف ترويسات التخزين التي تُبقي الزوار على بناء قديم",
       "description": "صفحة رئيسية مخزّنة، وعامل خدمة يعمّر أطول منها. أنت نشرت، وهم لم يروا. هذه الأداة وراء كل سؤال: «هل نشرت؟ ما زلت أرى القديم»."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "unfinished",
-    "tags": ["ai", "llm", "reliability"],
+    "tags": [
+      "ai",
+      "llm",
+      "reliability"
+    ],
     "tests": 73,
     "en": {
       "tagline": "Find LLM calls that use the answer without checking it finished",
@@ -315,11 +624,16 @@
     "ar": {
       "tagline": "اكتشف استدعاءات النماذج التي تستخدم الجواب دون التحقق من اكتماله",
       "description": "بلغ النموذج حدّ الرموز في منتصف الجملة وأعاد ما لديه. وشيفرتك تقرأ المحتوى وتمضي. يبدو الأمر نموذجاً متقلباً، ويُحاسَب كحلقة إعادة محاولة."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "unapplied",
-    "tags": ["npm", "supply-chain", "security"],
+    "tags": [
+      "npm",
+      "supply-chain",
+      "security"
+    ],
     "tests": 98,
     "en": {
       "tagline": "Check that your dependency overrides actually took effect",
@@ -328,11 +642,15 @@
     "ar": {
       "tagline": "تحقّق أن تجاوزات الاعتماديات التي كتبتها نفذت فعلاً",
       "description": "ثبّتّ إصلاح ثغرة في التجاوزات. لم يطابق المحدِّد شيئاً، واحتفظ ملف القفل بالنسخة المصابة، وقرأ التدقيق ما كتبتَه لا ما ثُبِّت فعلاً."
-    }
+    },
+    "kind": "tool"
   },
   {
     "id": "uncloneable",
-    "tags": ["git", "developer-experience"],
+    "tags": [
+      "git",
+      "developer-experience"
+    ],
     "tests": 50,
     "en": {
       "tagline": "Find files somebody on your team cannot check out",
@@ -341,6 +659,7 @@
     "ar": {
       "tagline": "اكتشف الملفات التي لا يستطيع أحد أعضاء فريقك سحبها",
       "description": "ملفان لا يختلفان إلا في حالة الأحرف، ومجلد باسم محجوز، ونقطتان في اسم ملف. تُستنسخ بلا مشكلة على الجهاز الذي أرسلها، وتفشل على كل جهاز سواه."
-    }
+    },
+    "kind": "tool"
   }
 ]

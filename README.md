@@ -20,8 +20,8 @@ The only network call is an optional one to the GitHub API for star counts. It i
 
 | Page | What it is for |
 |---|---|
-| `index.html` | The whole body of work at a glance — six selected tools, the five most-starred contributions, and who I am |
-| `tools.html` | Every tool, with search and tag filters |
+| `index.html` | The whole body of work at a glance — six selected projects, the five most-starred contributions, and who I am |
+| `tools.html` | All 37 repositories — CLI tools, handbooks, apps and lists — filterable by kind and tag |
 | `contributions.html` | Every fix sent upstream, filterable by language, each with its root cause |
 | `admin.html` | The dashboard |
 
@@ -39,7 +39,7 @@ assets/js/i18n.js         language state, UI strings, direction flip
 assets/js/github.js       cached star counts, fails soft
 assets/js/admin.js        dashboard logic and JSON export
 data/site.json            bio and contact
-data/projects.json        the tools — the file the site reads
+data/projects.json        every project, each tagged with a kind
 data/contributions.json   the upstream fixes
 scripts/check.mjs         content self-check
 ```

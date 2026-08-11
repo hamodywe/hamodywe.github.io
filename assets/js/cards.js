@@ -22,7 +22,7 @@ export function openDetail(p) {
     el('h3', { id: 'detail-title', text: p.id }),
     el('p', { class: 'lede', text: copy.tagline }),
     el('p', { text: copy.description }),
-    el('div', { class: 'card-run' }, [el('span', { text: `npx ${p.id}` })]),
+    p.kind === 'tool' ? el('div', { class: 'card-run' }, [el('span', { text: `npx ${p.id}` })]) : null,
     el('div', { class: 'card-meta' }, [
       ...(p.tags || []).map((tag) => el('span', { class: 'pill', text: tag })),
       p.tests ? el('span', { class: 'pill', text: `${p.tests} ${t('tests')}` }) : null,
@@ -51,11 +51,11 @@ export function card(p) {
 
   const top = el('div', { class: 'card-top' }, [
     el('h3', {}, [el('a', { href: repoUrl(p.id), target: '_blank', rel: 'noopener', text: p.id })]),
-    p.featured ? el('span', { class: 'badge-featured', text: t('featured') }) : null,
+    el('span', { class: `kind kind-${p.kind || 'tool'}`, text: t(`kind.${p.kind || 'tool'}`) }),
     stat && stat.stars > 0 ? el('span', { class: 'star', text: `★ ${stat.stars}` }) : null,
   ]);
 
-  const runRow = el('div', { class: 'card-run' }, [
+  const runRow = p.kind !== 'tool' ? null : el('div', { class: 'card-run' }, [
     el('span', { text: run }),
     el('button', {
       type: 'button',

@@ -5,9 +5,10 @@ import { $, countUp, el, observeOnce, wireHeader } from './shared.js';
 import { configureCards, renderCards, wireDialog } from './cards.js';
 import { loadRepoStats } from './github.js';
 
-const state = { site: null, projects: [], query: '', tag: null };
+const state = { site: null, projects: [], query: '', tag: null, kind: null };
 
 function matches(p) {
+  if (state.kind && (p.kind || 'tool') !== state.kind) return false;
   if (state.tag && !(p.tags || []).includes(state.tag)) return false;
   const q = state.query.trim().toLowerCase();
   if (!q) return true;
@@ -18,10 +19,12 @@ function matches(p) {
 function renderStats() {
   const tests = state.projects.reduce((n, p) => n + (p.tests || 0), 0);
   const tags = new Set(state.projects.flatMap((p) => p.tags || []));
+  const kinds = new Map();
+  for (const p of state.projects) kinds.set(p.kind || 'tool', (kinds.get(p.kind || 'tool') || 0) + 1);
   const rows = [
-    [state.projects.length, t('stat.projects')],
-    [tests, t('stat.tests')],
-    [0, t('stat.deps')],
+    [state.projects.length, t('stat.repos.own')],
+    [kinds.get('tool') || 0, t('stat.projects')],
+    [kinds.get('handbook') || 0, t('stat.handbooks')],
     [tags.size, t('stat.areas')],
   ];
   const nodes = rows.map(([n, label]) =>
@@ -31,9 +34,38 @@ function renderStats() {
   observeOnce($('#stats'), () => nodes.forEach((w, i) => countUp(w.firstChild, rows[i][0])));
 }
 
+function renderKinds() {
+  const counts = new Map();
+  for (const p of state.projects) {
+    const k = p.kind || 'tool';
+    counts.set(k, (counts.get(k) || 0) + 1);
+  }
+  const order = ['tool', 'handbook', 'app', 'list'].filter((k) => counts.has(k));
+
+  const button = (label, value) =>
+    el('button', {
+      class: 'kind-btn',
+      type: 'button',
+      'aria-pressed': String(state.kind === value),
+      text: label,
+      onclick: () => {
+        state.kind = state.kind === value ? null : value;
+        renderKinds();
+        renderTags();
+        renderGrid();
+      },
+    });
+
+  $('#kinds').replaceChildren(
+    button(`${t('work.all')} ${state.projects.length}`, null),
+    ...order.map((k) => button(`${t(`kind.${k}`)} ${counts.get(k)}`, k)),
+  );
+}
+
 function renderTags() {
   const counts = new Map();
-  for (const p of state.projects) for (const tag of p.tags || []) counts.set(tag, (counts.get(tag) || 0) + 1);
+  const pool = state.kind ? state.projects.filter((p) => (p.kind || 'tool') === state.kind) : state.projects;
+  for (const p of pool) for (const tag of p.tags || []) counts.set(tag, (counts.get(tag) || 0) + 1);
   const ordered = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 
   const button = (label, value) =>
@@ -66,6 +98,7 @@ function renderPage() {
   $('#q').placeholder = t('work.search');
   $('#foot-left').textContent = t('foot.left');
   renderStats();
+  renderKinds();
   renderTags();
   renderGrid();
 }
