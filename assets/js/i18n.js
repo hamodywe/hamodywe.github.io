@@ -25,6 +25,8 @@ export const STRINGS = {
     'contact.line': 'Available for remote roles and contract work. The fastest way to reach me is email.',
     'contact.mail': 'Email me',
     'foot.left': 'Built with no framework and no build step.',
+    'detail.repo': 'Open the repository',
+    'detail.more': 'details',
   },
   ar: {
     'skip': 'تخطَّ إلى المحتوى',
@@ -50,6 +52,8 @@ export const STRINGS = {
     'contact.line': 'متاح للعمل عن بُعد والمشاريع التعاقدية. أسرع طريقة للوصول إليّ هي البريد الإلكتروني.',
     'contact.mail': 'راسلني',
     'foot.left': 'مبني بلا إطار عمل وبلا خطوة بناء.',
+    'detail.repo': 'افتح المستودع',
+    'detail.more': 'تفاصيل',
   },
 };
 

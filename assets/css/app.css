@@ -194,8 +194,19 @@ html[dir='rtl'] .hero h1 { line-height: 1.35; letter-spacing: 0; }
 
 .card-top { display: flex; align-items: center; gap: 0.6rem; }
 .card h3 { margin: 0; font-size: 1.06rem; font-family: var(--mono); font-weight: 620; letter-spacing: -0.01em; }
-.card h3 a { text-decoration: none; }
-.card h3 a::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius); }
+/* The title links to the repository. The card body is deliberately NOT a
+   stretched link: the rest of the card opens the detail dialog, and one
+   element cannot be both. */
+.card h3 a { text-decoration: none; border-bottom: 1px solid transparent; }
+.card h3 a:hover { border-bottom-color: var(--accent); }
+.card { cursor: pointer; }
+
+.card-more {
+  border: 1px solid var(--line); background: transparent; color: var(--ink-soft);
+  border-radius: 999px; padding: 0.14rem 0.6rem; font: inherit; font-size: 0.74rem;
+  cursor: pointer; font-family: var(--mono);
+}
+.card-more:hover { color: var(--accent); border-color: var(--accent); }
 .star {
   margin-inline-start: auto; font-size: 0.8rem; color: var(--ink-faint);
   font-variant-numeric: tabular-nums; display: inline-flex; align-items: center; gap: 0.25rem;

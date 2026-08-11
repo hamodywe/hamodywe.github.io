@@ -64,3 +64,22 @@ Direction is handled with logical CSS properties (`margin-inline`, `inset-inline
 ## Licence
 
 MIT — see [LICENSE](LICENSE). The content and project descriptions are mine; the code is yours to borrow.
+
+## Motion
+
+`assets/css/motion.css` is a progressive layer: delete it and the site is still complete and legible. Where the browser supports it, card reveals are driven by `animation-timeline: view()` — the scroll position itself, with no JavaScript in the loop — and fall back to an `IntersectionObserver`. Language and theme changes run through the View Transitions API where available.
+
+Every effect is disabled under `prefers-reduced-motion: reduce`, and that path is tested rather than assumed: with the setting on, the headline renders as plain text, all opacities resolve to 1, and the statistics show their final values without counting.
+
+## Using a custom domain
+
+The site lives at `hamodywe.github.io` and always will. To put a domain in front of it:
+
+1. Buy the domain.
+2. At your registrar, point it at GitHub Pages:
+   - apex (`example.com`): four `A` records → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - subdomain (`www.example.com`): one `CNAME` → `hamodywe.github.io`
+3. Add a file named `CNAME` at the repository root containing only the domain.
+4. Repository → Settings → Pages → set the custom domain and tick **Enforce HTTPS** once the certificate is issued.
+
+DNS usually propagates within the hour; the certificate can take a little longer.

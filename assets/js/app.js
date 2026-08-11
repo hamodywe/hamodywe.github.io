@@ -40,10 +40,50 @@ const repoUrl = (id) => `https://github.com/${state.site.handle}/${id}`;
 
 /* ---------- rendering ---------- */
 
+const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/** Splits the headline into words so each can rise on its own delay. */
+function setHeadline(node, text) {
+  if (reducedMotion()) {
+    node.textContent = text;
+    return;
+  }
+  node.replaceChildren(
+    ...text.split(' ').flatMap((word, i) => {
+      const span = el('span', { class: 'w', text: word });
+      span.style.setProperty('--i', String(i));
+      return [span, document.createTextNode(' ')];
+    }),
+  );
+}
+
+/** Counts a number up once, when it first scrolls into view. */
+function countUp(node, value) {
+  const target = Number(String(value).replace(/[^\d]/g, ''));
+  if (!Number.isFinite(target) || target === 0 || reducedMotion()) {
+    node.textContent = String(value);
+    return;
+  }
+  const locale = getLang() === 'ar' ? 'ar-EG' : 'en-US';
+  const duration = 900;
+  let start = null;
+  node.dataset.counting = '';
+
+  const step = (now) => {
+    start ??= now;
+    const p = Math.min(1, (now - start) / duration);
+    const eased = 1 - (1 - p) ** 3;
+    node.textContent = Math.round(target * eased).toLocaleString(locale);
+    if (p < 1) requestAnimationFrame(step);
+    else delete node.dataset.counting;
+  };
+  requestAnimationFrame(step);
+}
+
 function renderHeader() {
   const s = state.site[getLang()];
   $('#hero-role').textContent = s.role;
-  $('#hero-tagline').textContent = s.tagline;
+  setHeadline($('#hero-tagline'), s.tagline);
   $('#hero-intro').textContent = s.intro;
   $('#contrib-intro').textContent = s.contributionsIntro;
   $('#about-body').innerHTML = t('about.body');
@@ -64,11 +104,41 @@ function renderStats() {
     [0, t('stat.deps')],
     [state.site.contributions.length, t('stat.prs')],
   ];
-  $('#stats').replaceChildren(
-    ...rows.map(([n, label]) =>
-      el('div', {}, [el('div', { class: 'stat-n', text: String(n) }), el('div', { class: 'stat-l', text: label })]),
-    ),
-  );
+  const nodes = rows.map(([n, label]) => {
+    const num = el('div', { class: 'stat-n', text: String(n) });
+    return el('div', {}, [num, el('div', { class: 'stat-l', text: label })]);
+  });
+  $('#stats').replaceChildren(...nodes);
+
+  // Only count once the numbers are actually on screen.
+  observeOnce($('#stats'), () => {
+    nodes.forEach((wrap, i) => countUp(wrap.firstChild, rows[i][0]));
+  });
+}
+
+/** Runs `fn` the first time `node` enters the viewport, or immediately if the
+ *  observer is unavailable — never leaving content in its pre-animation state. */
+function observeOnce(node, fn) {
+  if (!node) return;
+  if (!('IntersectionObserver' in window)) {
+    fn();
+    return;
+  }
+  const io = new IntersectionObserver((entries, obs) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        obs.disconnect();
+        fn();
+      }
+    }
+  }, { rootMargin: '0px 0px -10% 0px' });
+  io.observe(node);
+}
+
+function renderMarquee() {
+  const tags = [...new Set(state.projects.flatMap((p) => p.tags || []))];
+  const items = [...tags, ...tags].map((tag) => el('span', { text: tag }));
+  $('#marquee').replaceChildren(...items);
 }
 
 function renderTags() {
@@ -140,16 +210,68 @@ function card(p) {
     [
       ...(p.tags || []).slice(0, 3).map((tag) => el('span', { class: 'pill', text: tag })),
       p.tests ? el('span', { class: 'pill', text: `${p.tests} ${t('tests')}` }) : null,
+      // Keyboard route to the dialog: the card-body click is a convenience,
+      // not the only way in.
+      el('button', {
+        class: 'card-more',
+        type: 'button',
+        text: t('detail.more'),
+        onclick: (ev) => {
+          ev.stopPropagation();
+          openDetail(p);
+        },
+      }),
     ],
   );
 
-  return el('article', { class: 'card' }, [
+  const node = el('article', { class: 'card' }, [
     top,
     el('p', { class: 'card-tagline', text: copy.tagline }),
     el('p', { class: 'card-desc', text: copy.description }),
     runRow,
     meta,
   ]);
+
+  // The highlight follows the pointer; the card link stays the primary action.
+  node.addEventListener('pointermove', (ev) => {
+    const r = node.getBoundingClientRect();
+    node.style.setProperty('--mx', `${((ev.clientX - r.left) / r.width) * 100}%`);
+    node.style.setProperty('--my', `${((ev.clientY - r.top) / r.height) * 100}%`);
+  });
+
+  // Anywhere that is not the repo link or the copy button opens the detail.
+  node.addEventListener('click', (ev) => {
+    if (ev.target.closest('a, button')) return;
+    openDetail(p);
+  });
+
+  return node;
+}
+
+/* ---------- detail dialog ---------- */
+
+function openDetail(p) {
+  const copy = p[getLang()] || p.en;
+  const stat = state.stars.get(p.id);
+
+  $('#detail-in').replaceChildren(
+    el('h3', { id: 'detail-title', text: p.id }),
+    el('p', { class: 'lede', text: copy.tagline }),
+    el('p', { text: copy.description }),
+    el('div', { class: 'card-run' }, [el('span', { text: `npx ${p.id}` })]),
+    el('div', { class: 'card-meta' }, [
+      ...(p.tags || []).map((tag) => el('span', { class: 'pill', text: tag })),
+      p.tests ? el('span', { class: 'pill', text: `${p.tests} ${t('tests')}` }) : null,
+      stat && stat.stars > 0 ? el('span', { class: 'pill', text: `★ ${stat.stars}` }) : null,
+    ]),
+    el('div', { class: 'hero-actions' }, [
+      el('a', { class: 'btn btn-primary', href: repoUrl(p.id), target: '_blank', rel: 'noopener', text: t('detail.repo') }),
+    ]),
+  );
+
+  const dlg = $('#detail');
+  if (typeof dlg.showModal === 'function') dlg.showModal();
+  else dlg.setAttribute('open', '');
 }
 
 function renderGrid() {
@@ -199,26 +321,51 @@ function renderContributions() {
 function renderAll() {
   renderHeader();
   renderStats();
+  renderMarquee();
   renderTags();
   renderGrid();
   renderContributions();
+
+  for (const head of document.querySelectorAll('.sec-head')) {
+    observeOnce(head, () => head.classList.add('in'));
+  }
 }
 
 /* ---------- wiring ---------- */
 
+/** Runs an update inside a view transition where the browser supports one. */
+function transition(update) {
+  if (!document.startViewTransition || reducedMotion()) {
+    update();
+    return;
+  }
+  document.startViewTransition(update);
+}
+
 function wireControls() {
   $('#lang-toggle').addEventListener('click', () => {
-    applyLang(getLang() === 'ar' ? 'en' : 'ar');
-    renderAll();
+    transition(() => {
+      applyLang(getLang() === 'ar' ? 'en' : 'ar');
+      renderAll();
+    });
   });
 
   $('#theme-toggle').addEventListener('click', () => {
-    const root = document.documentElement;
-    const dark = root.dataset.theme
-      ? root.dataset.theme === 'dark'
-      : window.matchMedia('(prefers-color-scheme: dark)').matches;
-    root.dataset.theme = dark ? 'light' : 'dark';
-    localStorage.setItem('theme', root.dataset.theme);
+    transition(() => {
+      const root = document.documentElement;
+      const dark = root.dataset.theme
+        ? root.dataset.theme === 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      root.dataset.theme = dark ? 'light' : 'dark';
+      localStorage.setItem('theme', root.dataset.theme);
+    });
+  });
+
+  const dlg = $('#detail');
+  $('#detail-close').addEventListener('click', () => dlg.close());
+  // Clicking the backdrop (the dialog element itself) closes it.
+  dlg.addEventListener('click', (ev) => {
+    if (ev.target === dlg) dlg.close();
   });
 
   $('#q').addEventListener('input', (e) => {

@@ -1,0 +1,200 @@
+/* Motion and depth layer.
+   Everything here is progressive: the site is complete and legible with this
+   file removed, and every effect is disabled under prefers-reduced-motion. */
+
+/* ---------- scroll progress ---------- */
+
+.progress {
+  position: fixed; inset-block-start: 0; inset-inline: 0; height: 2px; z-index: 60;
+  background: linear-gradient(to right, var(--accent), color-mix(in srgb, var(--accent) 45%, transparent));
+  transform-origin: left center;
+  scale: 0 1;
+}
+html[dir='rtl'] .progress { transform-origin: right center; }
+
+@supports (animation-timeline: scroll()) {
+  .progress {
+    animation: progress-grow linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+@keyframes progress-grow { to { scale: 1 1; } }
+
+/* ---------- hero atmosphere ---------- */
+
+.hero { position: relative; isolation: isolate; }
+
+.hero::before {
+  content: '';
+  position: absolute; z-index: -1;
+  inset-block-start: -12rem; inset-inline-start: -20%;
+  width: 70ch; aspect-ratio: 1;
+  background:
+    radial-gradient(closest-side, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%);
+  filter: blur(28px);
+  opacity: 0.75;
+  animation: drift 22s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute; z-index: -1;
+  inset-block-start: 2rem; inset-inline-end: -10%;
+  width: 46ch; aspect-ratio: 1;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--warn) 14%, transparent), transparent 70%);
+  filter: blur(34px);
+  animation: drift 28s 2s ease-in-out infinite alternate-reverse;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  from { translate: 0 0; scale: 1; }
+  to { translate: 6% 4%; scale: 1.12; }
+}
+
+/* Words in the headline rise in sequence. */
+.hero h1 .w {
+  display: inline-block;
+  opacity: 0;
+  translate: 0 0.5em;
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--i) * 45ms);
+}
+@keyframes rise { to { opacity: 1; translate: 0 0; } }
+
+.hero-role, .hero p, .hero-actions, .stats {
+  opacity: 0;
+  animation: fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero-role { animation-delay: 0.05s; }
+.hero p { animation-delay: 0.34s; }
+.hero-actions { animation-delay: 0.44s; }
+.stats { animation-delay: 0.54s; }
+
+@keyframes fade-up {
+  from { opacity: 0; translate: 0 14px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+/* ---------- cards ---------- */
+
+/* Reveal is driven by the scroll position where support exists, and by the
+   IntersectionObserver `.in` class everywhere else. */
+@supports (animation-timeline: view()) {
+  .card {
+    opacity: 1; translate: none;
+    animation: card-in linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 22%;
+  }
+}
+@keyframes card-in {
+  from { opacity: 0; translate: 0 26px; scale: 0.985; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+
+/* A light that follows the pointer across the card. */
+.card::before {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(
+    16rem circle at var(--mx, 50%) var(--my, 0%),
+    color-mix(in srgb, var(--accent) 12%, transparent),
+    transparent 60%
+  );
+  opacity: 0; transition: opacity 0.25s ease;
+}
+.card:hover::before { opacity: 1; }
+
+.card-tagline { text-wrap: balance; }
+.card-desc { text-wrap: pretty; }
+
+/* ---------- stats count-up ---------- */
+
+.stat-n { transition: color 0.3s; }
+.stat-n[data-counting] { color: var(--accent); }
+
+/* ---------- section headings ---------- */
+
+.sec-head h2 { position: relative; display: inline-block; text-wrap: balance; }
+.sec-head h2::after {
+  content: ''; position: absolute; inset-block-end: -6px; inset-inline-start: 0;
+  height: 2px; width: 100%; background: var(--accent); border-radius: 2px;
+  scale: 0 1; transform-origin: inline-start;
+  transition: scale 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sec-head.in h2::after { scale: 1 1; }
+
+/* ---------- marquee ---------- */
+
+.marquee {
+  --gap: 2.5rem;
+  overflow: hidden; mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  border-block: 1px solid var(--line); padding-block: 0.9rem; margin-block: 1rem 0;
+}
+.marquee-track { display: flex; gap: var(--gap); width: max-content; animation: slide 38s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee span {
+  font-family: var(--mono); font-size: 0.82rem; color: var(--ink-faint);
+  white-space: nowrap; letter-spacing: 0.02em;
+}
+@keyframes slide { to { translate: calc(-50% - (var(--gap) / 2)) 0; } }
+html[dir='rtl'] .marquee-track { animation-direction: reverse; }
+
+/* ---------- detail dialog ---------- */
+
+dialog.detail {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--bg-raised); color: var(--ink);
+  padding: 0; max-width: min(56ch, calc(100vw - 2.5rem)); width: 100%;
+  box-shadow: var(--shadow-lift);
+}
+dialog.detail::backdrop {
+  background: color-mix(in srgb, #05070a 62%, transparent);
+  backdrop-filter: blur(3px);
+}
+
+@starting-style {
+  dialog.detail[open] { opacity: 0; translate: 0 12px; }
+  dialog.detail[open]::backdrop { opacity: 0; }
+}
+dialog.detail[open] {
+  opacity: 1; translate: 0 0;
+  transition: opacity 0.25s ease, translate 0.25s cubic-bezier(0.22, 1, 0.36, 1), overlay 0.25s allow-discrete, display 0.25s allow-discrete;
+}
+dialog.detail[open]::backdrop { opacity: 1; transition: opacity 0.25s ease, overlay 0.25s allow-discrete, display 0.25s allow-discrete; }
+
+.detail-in { padding: 1.6rem; display: grid; gap: 0.9rem; }
+.detail-in h3 { margin: 0; font-family: var(--mono); font-size: 1.2rem; }
+.detail-in .lede { font-size: 1.02rem; font-weight: 560; margin: 0; text-wrap: balance; }
+.detail-in p { margin: 0; color: var(--ink-soft); }
+.detail-close {
+  position: absolute; inset-block-start: 0.75rem; inset-inline-end: 0.75rem;
+  border: 0; background: transparent; color: var(--ink-faint); font-size: 1.1rem;
+  cursor: pointer; border-radius: 6px; width: 30px; height: 30px;
+}
+.detail-close:hover { color: var(--ink); background: var(--bg-sunken); }
+
+/* ---------- view transitions ---------- */
+
+@view-transition { navigation: auto; }
+
+::view-transition-old(root) { animation: vt-out 0.18s ease both; }
+::view-transition-new(root) { animation: vt-in 0.28s ease both; }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; } }
+
+/* ---------- honour the setting ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before, .hero::after { animation: none; }
+  .hero h1 .w, .hero-role, .hero p, .hero-actions, .stats { animation: none; opacity: 1; translate: none; }
+  .marquee-track { animation: none; }
+  .card { animation: none; opacity: 1; translate: none; }
+  .card::before { display: none; }
+  .sec-head h2::after { transition: none; scale: 1 1; }
+  .progress { animation: none; scale: 1 1; }
+  dialog.detail[open] { transition: none; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
