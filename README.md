@@ -16,20 +16,35 @@ No framework, no bundler, no build step, and no runtime dependencies. Three reas
 
 The only network call is an optional one to the GitHub API for star counts. It is cached for a day, and if it fails the page renders exactly as before — stars are decoration, never a dependency.
 
+## Pages
+
+| Page | What it is for |
+|---|---|
+| `index.html` | The whole body of work at a glance — six selected tools, the five most-starred contributions, and who I am |
+| `tools.html` | Every tool, with search and tag filters |
+| `contributions.html` | Every fix sent upstream, filterable by language, each with its root cause |
+| `admin.html` | The dashboard |
+
 ## Layout
 
 ```
-index.html              the portfolio
-admin.html              the dashboard
-assets/css/app.css      design tokens, light + dark, LTR + RTL
-assets/js/app.js        data loading, filtering, rendering
-assets/js/i18n.js       language state, UI strings, direction flip
-assets/js/github.js     cached star counts, fails soft
-assets/js/admin.js      dashboard logic and JSON export
-data/site.json          bio, contact, upstream contributions
-data/projects.json      the project list — the file the site reads
-scripts/check.mjs       content self-check
+assets/css/app.css        design tokens, light + dark, LTR + RTL
+assets/css/motion.css     the motion layer — removable without loss
+assets/js/home.js         the overview page
+assets/js/tools.js        the tools page
+assets/js/contributions.js the contributions page
+assets/js/cards.js        the project card and its detail dialog
+assets/js/shared.js       header, toast, reveal and count-up helpers
+assets/js/i18n.js         language state, UI strings, direction flip
+assets/js/github.js       cached star counts, fails soft
+assets/js/admin.js        dashboard logic and JSON export
+data/site.json            bio and contact
+data/projects.json        the tools — the file the site reads
+data/contributions.json   the upstream fixes
+scripts/check.mjs         content self-check
 ```
+
+The three pages share `cards.js` and `shared.js` rather than each carrying a copy: a card that renders differently on the home page than on the tools page is the kind of drift nobody notices until a screenshot goes out.
 
 ## Adding a project
 

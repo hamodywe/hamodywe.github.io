@@ -16,6 +16,7 @@ const fail = (msg) => problems.push(msg);
 
 const projects = JSON.parse(await read('data/projects.json'));
 const site = JSON.parse(await read('data/site.json'));
+const contributions = JSON.parse(await read('data/contributions.json'));
 const i18nSrc = await read('assets/js/i18n.js');
 
 /* --- every project is complete in both languages --- */
@@ -52,8 +53,17 @@ for (const lang of ['en', 'ar']) {
   }
 }
 
-for (const c of site.contributions) {
-  if (!c.en?.trim() || !c.ar?.trim()) fail(`contribution ${c.repo}#${c.pr} is missing a translation`);
+const prSeen = new Set();
+for (const c of contributions) {
+  const key = `${c.repo}#${c.pr}`;
+  if (prSeen.has(key)) fail(`duplicate contribution: ${key}`);
+  prSeen.add(key);
+  if (!c.lang?.trim()) fail(`${key}: no language`);
+  if (!Number.isFinite(c.stars)) fail(`${key}: stars must be a number`);
+  for (const lang of ['en', 'ar']) {
+    if (!c[lang]?.title?.trim()) fail(`${key}: empty ${lang}.title`);
+    if (!c[lang]?.what?.trim()) fail(`${key}: empty ${lang}.what`);
+  }
 }
 
 /* --- the two string tables carry the same keys --- */
@@ -90,5 +100,5 @@ if (problems.length > 0) {
   for (const p of problems) console.error(`  - ${p}`);
   process.exitCode = 1;
 } else {
-  console.log(`ok — ${projects.length} projects, ${site.contributions.length} contributions, both languages complete`);
+  console.log(`ok — ${projects.length} projects, ${contributions.length} contributions, both languages complete`);
 }

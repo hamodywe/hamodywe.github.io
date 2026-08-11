@@ -1,11 +1,8 @@
 <!doctype html>
 <html lang="en" dir="ltr">
 <head>
-<title>hamodywe — open source engineer</title>
-<meta name="description" content="I build tools that find the failure nobody sees: static analysers for CI, deploys, tests and AI agent tooling.">
-<meta property="og:title" content="hamodywe — open source engineer">
-<meta property="og:description" content="Tools that find the failure nobody sees.">
-<meta property="og:type" content="website">
+<title>Contributions — hamodywe</title>
+<meta name="description" content="Fixes sent upstream to projects I use, each traced to a root cause and covered by a test.">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
@@ -43,49 +40,19 @@
 </header>
 
 <main id="main">
-  <section class="hero wrap">
-    <span class="hero-role" id="hero-role"></span>
-    <h1 id="hero-tagline"></h1>
-    <p id="hero-intro"></p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="tools.html" data-i18n="cta.tools">Browse the tools</a>
-      <a class="btn btn-ghost" href="contributions.html" data-i18n="cta.contributions">See contributions</a>
-    </div>
+  <section class="page-head wrap">
+    <h1 id="page-title"></h1>
+    <p id="page-sub"></p>
     <div class="stats" id="stats"></div>
   </section>
 
-  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
-
   <section class="sec wrap">
-    <div class="sec-head">
-      <h2 id="featured-title"></h2>
-      <p id="featured-sub"></p>
-      <a class="sec-link" href="tools.html" id="all-tools"></a>
+    <div class="filters">
+      <input type="search" id="q" autocomplete="off">
+      <div id="langs" role="group"></div>
     </div>
-    <div class="grid" id="grid"></div>
-  </section>
-
-  <section class="sec wrap">
-    <div class="sec-head">
-      <h2 id="contrib-title"></h2>
-      <p id="contrib-sub"></p>
-      <a class="sec-link" href="contributions.html" id="all-contrib"></a>
-    </div>
-    <div class="contrib-list" id="contrib-list"></div>
-  </section>
-
-  <section class="sec wrap" id="about">
-    <div class="sec-head"><h2 id="about-title"></h2></div>
-    <div class="prose" id="about-body"></div>
-  </section>
-
-  <section class="sec wrap" id="contact">
-    <div class="sec-head"><h2 id="contact-title"></h2></div>
-    <p class="prose" id="contact-line"></p>
-    <div class="contact-row">
-      <a class="btn btn-primary" id="mail-link" href="#"></a>
-      <a class="btn btn-ghost" href="https://github.com/hamodywe" target="_blank" rel="noopener">github.com/hamodywe</a>
-    </div>
+    <div class="contrib-grid" id="list"></div>
+    <p class="empty" id="empty" hidden data-i18n="work.empty">Nothing matches that filter.</p>
   </section>
 </main>
 
@@ -99,6 +66,6 @@
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script type="module" src="assets/js/home.js"></script>
+<script type="module" src="assets/js/contributions.js"></script>
 </body>
 </html>
