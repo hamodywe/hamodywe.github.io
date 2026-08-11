@@ -1,122 +1,362 @@
 [
   {
-    "repo": "nektos/act", "pr": 6156, "stars": 71400, "lang": "Go", "status": "open",
-    "en": { "title": "Serialise artifact cache upload and commit", "what": "Both handlers checked the cache state, closed the database, then touched storage with nothing serialising them — so a commit could delete the temp chunk directory while an upload was still writing into it. Added a per-cache-ID lock and an HTTP-level test that forces the interleaving deterministically." },
-    "ar": { "title": "منع تسابق زمني بين رفع ذاكرة المخرجات وتثبيتها", "what": "كلا المعالجَين يفحص حالة الذاكرة ثم يغلق قاعدة البيانات ثم يلمس التخزين، بلا ما ينظّم بينهما — فيمكن للتثبيت أن يحذف مجلد القطع المؤقت بينما الرفع ما زال يكتب فيه. أضفت قفلاً لكل معرّف واختباراً يفرض التداخل بنتيجة حتمية." }
+    "repo": "nektos/act",
+    "pr": 6156,
+    "stars": 71463,
+    "lang": "Go",
+    "status": "open",
+    "en": {
+      "title": "Serialise artifact cache upload and commit",
+      "what": "Both handlers checked the cache state, closed the database, then touched storage with nothing serialising them — so a commit could delete the temp chunk directory while an upload was still writing into it. Added a per-cache-ID lock and an HTTP-level test that forces the interleaving deterministically."
+    },
+    "ar": {
+      "title": "منع تسابق زمني بين رفع ذاكرة المخرجات وتثبيتها",
+      "what": "كلا المعالجَين يفحص حالة الذاكرة ثم يغلق قاعدة البيانات ثم يلمس التخزين، بلا ما ينظّم بينهما — فيمكن للتثبيت أن يحذف مجلد القطع المؤقت بينما الرفع ما زال يكتب فيه. أضفت قفلاً لكل معرّف واختباراً يفرض التداخل بنتيجة حتمية."
+    }
   },
   {
-    "repo": "oxc-project/oxc", "pr": 25438, "stars": 22000, "lang": "Rust", "status": "open",
-    "en": { "title": "Permanent LSP deadlock on outstanding diagnostic refreshes", "what": "Three notification handlers awaited a server-to-client refresh inside the handler, pinning one of the four transport slots for a full round trip. Four rapid watcher events pinned all four while the client waited on pulls the server could no longer service — a circular wait with no timeout. Detached the refresh so the slot returns immediately." },
-    "ar": { "title": "تجمّد دائم في خادم اللغة عند تعليق طلبات تحديث التشخيصات", "what": "ثلاثة معالِجات كانت تنتظر ردّ العميل داخل المعالِج نفسه، فتحجز واحدة من أربع قنوات نقل طوال الرحلة. أربعة أحداث متتابعة تحجز الأربع بينما ينتظر العميل استعلامات لم يعد الخادم قادراً على خدمتها — انتظار دائري بلا مهلة. فصلت التحديث ليعود المكان فوراً." }
+    "repo": "oxc-project/oxc",
+    "pr": 25438,
+    "stars": 22275,
+    "lang": "Rust",
+    "status": "open",
+    "en": {
+      "title": "Permanent LSP deadlock on outstanding diagnostic refreshes",
+      "what": "Three notification handlers awaited a server-to-client refresh inside the handler, pinning one of the four transport slots for a full round trip. Four rapid watcher events pinned all four while the client waited on pulls the server could no longer service — a circular wait with no timeout. Detached the refresh so the slot returns immediately."
+    },
+    "ar": {
+      "title": "تجمّد دائم في خادم اللغة عند تعليق طلبات تحديث التشخيصات",
+      "what": "ثلاثة معالِجات كانت تنتظر ردّ العميل داخل المعالِج نفسه، فتحجز واحدة من أربع قنوات نقل طوال الرحلة. أربعة أحداث متتابعة تحجز الأربع بينما ينتظر العميل استعلامات لم يعد الخادم قادراً على خدمتها — انتظار دائري بلا مهلة. فصلت التحديث ليعود المكان فوراً."
+    }
   },
   {
-    "repo": "pnpm/pnpm", "pr": 13733, "stars": 36000, "lang": "TypeScript", "status": "open",
-    "en": { "title": "audit signatures silently dropped unresolvable lockfile entries", "what": "The lockfile walker already separated entries it resolved from ones it could not find, but the audit visitor only ever read the resolved ones. A dangling reference never reached signature verification at all: the audited count silently shrank and the exit code stayed 0." },
-    "ar": { "title": "تدقيق التواقيع كان يُسقط مدخلات ملف القفل غير القابلة للحل", "what": "المتجوّل في ملف القفل يفصل أصلاً بين ما استطاع حلّه وما لم يجده، لكن التدقيق كان يقرأ المحلول فقط. فالمرجع المعلّق لا يصل إلى التحقق من التوقيع إطلاقاً: يتقلّص العدد المدقَّق بصمت ويبقى رمز الخروج صفراً." }
+    "repo": "pnpm/pnpm",
+    "pr": 13733,
+    "stars": 36031,
+    "lang": "TypeScript",
+    "status": "open",
+    "en": {
+      "title": "audit signatures silently dropped unresolvable lockfile entries",
+      "what": "The lockfile walker already separated entries it resolved from ones it could not find, but the audit visitor only ever read the resolved ones. A dangling reference never reached signature verification at all: the audited count silently shrank and the exit code stayed 0."
+    },
+    "ar": {
+      "title": "تدقيق التواقيع كان يُسقط مدخلات ملف القفل غير القابلة للحل",
+      "what": "المتجوّل في ملف القفل يفصل أصلاً بين ما استطاع حلّه وما لم يجده، لكن التدقيق كان يقرأ المحلول فقط. فالمرجع المعلّق لا يصل إلى التحقق من التوقيع إطلاقاً: يتقلّص العدد المدقَّق بصمت ويبقى رمز الخروج صفراً."
+    }
   },
   {
-    "repo": "gitleaks/gitleaks", "pr": 2235, "stars": 28500, "lang": "Go", "status": "open",
-    "en": { "title": "Unreadable files skipped while the scan reported success", "what": "The walker logged a warning only for permission errors, stayed silent for every other failure, and always returned nil — so the existing partial-scan exit path was structurally unreachable. A secret scanner that cannot read a file must not report a clean run." },
-    "ar": { "title": "ملفات غير مقروءة تُتخطّى بينما يُبلّغ الفحص بالنجاح", "what": "كان المتجوّل يسجّل تحذيراً لأخطاء الصلاحيات وحدها ويصمت عن غيرها ويعيد لا شيء دائماً — فمسار «الفحص الجزئي» الموجود أصلاً كان غير قابل للوصول بنيوياً. وأداة تفتيش عن الأسرار لا تقرأ ملفاً يجب ألا تُبلّغ بفحص نظيف." }
+    "repo": "gitleaks/gitleaks",
+    "pr": 2235,
+    "stars": 28602,
+    "lang": "Go",
+    "status": "open",
+    "en": {
+      "title": "Unreadable files skipped while the scan reported success",
+      "what": "The walker logged a warning only for permission errors, stayed silent for every other failure, and always returned nil — so the existing partial-scan exit path was structurally unreachable. A secret scanner that cannot read a file must not report a clean run."
+    },
+    "ar": {
+      "title": "ملفات غير مقروءة تُتخطّى بينما يُبلّغ الفحص بالنجاح",
+      "what": "كان المتجوّل يسجّل تحذيراً لأخطاء الصلاحيات وحدها ويصمت عن غيرها ويعيد لا شيء دائماً — فمسار «الفحص الجزئي» الموجود أصلاً كان غير قابل للوصول بنيوياً. وأداة تفتيش عن الأسرار لا تقرأ ملفاً يجب ألا تُبلّغ بفحص نظيف."
+    }
   },
   {
-    "repo": "semgrep/semgrep", "pr": 11843, "stars": 11700, "lang": "Python", "status": "open",
-    "en": { "title": "Join-mode rules crashed on Windows", "what": "The rule content was written to a NamedTemporaryFile and the path handed to a nested scan while the handle was still open. POSIX allows a second open; Windows does not. Root-caused by reproducing the OS-level behaviour first, then closing the handle before returning the path." },
-    "ar": { "title": "قواعد وضع الربط تنهار على ويندوز", "what": "كان محتوى القاعدة يُكتب في ملف مؤقت ويُمرَّر مساره لفحص متداخل والمقبض ما زال مفتوحاً. أنظمة POSIX تسمح بفتح ثانٍ، وويندوز لا. وصلت للسبب بإعادة إنتاج سلوك النظام أولاً، ثم أغلقت المقبض قبل إعادة المسار." }
+    "repo": "semgrep/semgrep",
+    "pr": 11843,
+    "stars": 16184,
+    "lang": "Python",
+    "status": "open",
+    "en": {
+      "title": "Join-mode rules crashed on Windows",
+      "what": "The rule content was written to a NamedTemporaryFile and the path handed to a nested scan while the handle was still open. POSIX allows a second open; Windows does not. Root-caused by reproducing the OS-level behaviour first, then closing the handle before returning the path."
+    },
+    "ar": {
+      "title": "قواعد وضع الربط تنهار على ويندوز",
+      "what": "كان محتوى القاعدة يُكتب في ملف مؤقت ويُمرَّر مساره لفحص متداخل والمقبض ما زال مفتوحاً. أنظمة POSIX تسمح بفتح ثانٍ، وويندوز لا. وصلت للسبب بإعادة إنتاج سلوك النظام أولاً، ثم أغلقت المقبض قبل إعادة المسار."
+    }
   },
   {
-    "repo": "sqlalchemy/sqlalchemy", "pr": 13487, "stars": 12000, "lang": "Python", "status": "open",
-    "en": { "title": "A failed bulk call left the Session permanently wedged", "what": "The flushing flag was set before the try block, so when beginning the transaction raised, the finally that clears it never ran. Neither rollback nor close resets the flag, so a reused Session raised on every subsequent flush until it was discarded." },
-    "ar": { "title": "استدعاء جماعي فاشل يترك الجلسة معطّلة نهائياً", "what": "كانت راية التفريغ تُضبط قبل كتلة المحاولة، فإذا فشل بدء المعاملة لم تعمل الكتلة التي تُصفّرها. ولا التراجع ولا الإغلاق يُعيدانها، فتفشل كل عملية تفريغ لاحقة على نفس الجلسة حتى تُهمل." }
+    "repo": "sqlalchemy/sqlalchemy",
+    "pr": 13487,
+    "stars": 12063,
+    "lang": "Python",
+    "status": "open",
+    "en": {
+      "title": "A failed bulk call left the Session permanently wedged",
+      "what": "The flushing flag was set before the try block, so when beginning the transaction raised, the finally that clears it never ran. Neither rollback nor close resets the flag, so a reused Session raised on every subsequent flush until it was discarded."
+    },
+    "ar": {
+      "title": "استدعاء جماعي فاشل يترك الجلسة معطّلة نهائياً",
+      "what": "كانت راية التفريغ تُضبط قبل كتلة المحاولة، فإذا فشل بدء المعاملة لم تعمل الكتلة التي تُصفّرها. ولا التراجع ولا الإغلاق يُعيدانها، فتفشل كل عملية تفريغ لاحقة على نفس الجلسة حتى تُهمل."
+    }
   },
   {
-    "repo": "weaviate/weaviate", "pr": 12580, "stars": 14000, "lang": "Go", "status": "open",
-    "en": { "title": "Cluster middleware dropped when Sentry is enabled", "what": "The Sentry branch wrapped the bare mux rather than the chain built one line earlier, discarding both the cluster middleware and the gRPC routing closure. With Sentry on, the raft routes and their auth were absent from the served chain — silently, because every other route came from the mux directly. Reported by a co-founder; the gRPC half was not in the report." },
-    "ar": { "title": "وسيط الكتلة يسقط عند تفعيل Sentry", "what": "كان فرع Sentry يلفّ الموجّه المجرّد بدل السلسلة المبنيّة قبله بسطر، فيُسقط وسيط الكتلة وموزّع gRPC معاً. ومع تفعيله تختفي مسارات raft ومصادقتها من السلسلة — بصمت، لأن بقية المسارات تأتي من الموجّه مباشرة. رفع المشكلة أحد مؤسسي الشركة، ولم يكن شقّ gRPC مذكوراً فيها." }
+    "repo": "weaviate/weaviate",
+    "pr": 12580,
+    "stars": 16721,
+    "lang": "Go",
+    "status": "open",
+    "en": {
+      "title": "Cluster middleware dropped when Sentry is enabled",
+      "what": "The Sentry branch wrapped the bare mux rather than the chain built one line earlier, discarding both the cluster middleware and the gRPC routing closure. With Sentry on, the raft routes and their auth were absent from the served chain — silently, because every other route came from the mux directly. Reported by a co-founder; the gRPC half was not in the report."
+    },
+    "ar": {
+      "title": "وسيط الكتلة يسقط عند تفعيل Sentry",
+      "what": "كان فرع Sentry يلفّ الموجّه المجرّد بدل السلسلة المبنيّة قبله بسطر، فيُسقط وسيط الكتلة وموزّع gRPC معاً. ومع تفعيله تختفي مسارات raft ومصادقتها من السلسلة — بصمت، لأن بقية المسارات تأتي من الموجّه مباشرة. رفع المشكلة أحد مؤسسي الشركة، ولم يكن شقّ gRPC مذكوراً فيها."
+    }
   },
   {
-    "repo": "weaviate/weaviate", "pr": 12537, "stars": 14000, "lang": "Go", "status": "open",
-    "en": { "title": "Hybrid search truncated boost depth", "what": "With boost enabled the sub-searches reverted to the original limit, so a candidate beyond the hybrid maximum could never enter the fused pool to be re-ranked — silently, with no error." },
-    "ar": { "title": "البحث الهجين يبتر عمق الترجيح", "what": "مع تفعيل الترجيح كانت البحوث الفرعية تعود للحدّ الأصلي، فلا يمكن لمرشّح خارج الحد الأقصى أن يدخل المجمّع ليُعاد ترتيبه — بصمت وبلا خطأ." }
+    "repo": "weaviate/weaviate",
+    "pr": 12537,
+    "stars": 16721,
+    "lang": "Go",
+    "status": "open",
+    "en": {
+      "title": "Hybrid search truncated boost depth",
+      "what": "With boost enabled the sub-searches reverted to the original limit, so a candidate beyond the hybrid maximum could never enter the fused pool to be re-ranked — silently, with no error."
+    },
+    "ar": {
+      "title": "البحث الهجين يبتر عمق الترجيح",
+      "what": "مع تفعيل الترجيح كانت البحوث الفرعية تعود للحدّ الأصلي، فلا يمكن لمرشّح خارج الحد الأقصى أن يدخل المجمّع ليُعاد ترتيبه — بصمت وبلا خطأ."
+    }
   },
   {
-    "repo": "weaviate/weaviate", "pr": 12538, "stars": 14000, "lang": "Go", "status": "open",
-    "en": { "title": "date property accepted year 0000", "what": "Go's fixed-width year field parses the literal digits 0000 as year zero, which RFC 3339 forbids. Scoped deliberately to that violation: a pre-1970 date is not a format error, and a test pins that 1800 still parses." },
-    "ar": { "title": "حقل التاريخ يقبل السنة 0000", "what": "محلّل Go يقرأ الأرقام 0000 كسنة صفر، وهو ما يمنعه معيار RFC 3339. حصرت الإصلاح في هذه المخالفة وحدها: التاريخ قبل 1970 ليس خطأ صيغة، واختبارٌ يثبّت أن سنة 1800 ما زالت تُقبل." }
+    "repo": "weaviate/weaviate",
+    "pr": 12538,
+    "stars": 16721,
+    "lang": "Go",
+    "status": "open",
+    "en": {
+      "title": "date property accepted year 0000",
+      "what": "Go's fixed-width year field parses the literal digits 0000 as year zero, which RFC 3339 forbids. Scoped deliberately to that violation: a pre-1970 date is not a format error, and a test pins that 1800 still parses."
+    },
+    "ar": {
+      "title": "حقل التاريخ يقبل السنة 0000",
+      "what": "محلّل Go يقرأ الأرقام 0000 كسنة صفر، وهو ما يمنعه معيار RFC 3339. حصرت الإصلاح في هذه المخالفة وحدها: التاريخ قبل 1970 ليس خطأ صيغة، واختبارٌ يثبّت أن سنة 1800 ما زالت تُقبل."
+    }
   },
   {
-    "repo": "qdrant/qdrant", "pr": 10144, "stars": 23800, "lang": "Rust", "status": "open",
-    "en": { "title": "values_count treated an explicit null as zero values", "what": "A filter for at least one value excluded points whose payload explicitly contained the field set to null, contradicting the documented contract. Verified the absent-field path is separate before changing anything, so the fix could not over-correct." },
-    "ar": { "title": "عدّاد القيم يعتبر القيمة الفارغة الصريحة صفراً", "what": "الفلتر الذي يطلب قيمة واحدة على الأقل كان يستبعد النقاط التي تحوي الحقل بقيمة فارغة صريحة، خلافاً للعقد الموثّق. تحققت أولاً أن مسار «الحقل الغائب» منفصل، حتى لا يتجاوز الإصلاح حدّه." }
+    "repo": "qdrant/qdrant",
+    "pr": 10144,
+    "stars": 33921,
+    "lang": "Rust",
+    "status": "open",
+    "en": {
+      "title": "values_count treated an explicit null as zero values",
+      "what": "A filter for at least one value excluded points whose payload explicitly contained the field set to null, contradicting the documented contract. Verified the absent-field path is separate before changing anything, so the fix could not over-correct."
+    },
+    "ar": {
+      "title": "عدّاد القيم يعتبر القيمة الفارغة الصريحة صفراً",
+      "what": "الفلتر الذي يطلب قيمة واحدة على الأقل كان يستبعد النقاط التي تحوي الحقل بقيمة فارغة صريحة، خلافاً للعقد الموثّق. تحققت أولاً أن مسار «الحقل الغائب» منفصل، حتى لا يتجاوز الإصلاح حدّه."
+    }
   },
   {
-    "repo": "qdrant/qdrant", "pr": 10145, "stars": 23800, "lang": "Rust", "status": "open",
-    "en": { "title": "Cloud object-store stack pulled into every edge build", "what": "A non-optional dependency used by one implementation dragged reqwest, the AWS/GCP/Azure SDKs and an assembly build into builds that never use it. Gated behind a feature and verified with the dependency graph, positive control included." },
-    "ar": { "title": "حزم التخزين السحابي تُسحب إلى كل بناء طرفي", "what": "اعتمادية غير اختيارية يستخدمها تنفيذ واحد كانت تجرّ حزم الشبكة وأدوات AWS وGCP وAzure وبناءً بلغة التجميع إلى بنيات لا تستخدمها. عزلتها خلف خاصية وتحققت من شجرة الاعتماديات مع حالة ضبط موجبة." }
+    "repo": "qdrant/qdrant",
+    "pr": 10145,
+    "stars": 33921,
+    "lang": "Rust",
+    "status": "open",
+    "en": {
+      "title": "Cloud object-store stack pulled into every edge build",
+      "what": "A non-optional dependency used by one implementation dragged reqwest, the AWS/GCP/Azure SDKs and an assembly build into builds that never use it. Gated behind a feature and verified with the dependency graph, positive control included."
+    },
+    "ar": {
+      "title": "حزم التخزين السحابي تُسحب إلى كل بناء طرفي",
+      "what": "اعتمادية غير اختيارية يستخدمها تنفيذ واحد كانت تجرّ حزم الشبكة وأدوات AWS وGCP وAzure وبناءً بلغة التجميع إلى بنيات لا تستخدمها. عزلتها خلف خاصية وتحققت من شجرة الاعتماديات مع حالة ضبط موجبة."
+    }
   },
   {
-    "repo": "qdrant/qdrant", "pr": 10178, "stars": 23800, "lang": "Rust", "status": "open",
-    "en": { "title": "A flaky test that measured machine load, not cancellation", "what": "After asking a task to cancel, the test slept a fixed budget and asserted it had finished — so it passed or failed on scheduling. The budget had been padded twice for Windows in 2023 and still flaked on macOS. Now it waits for the flag the task itself sets." },
-    "ar": { "title": "اختبار متذبذب كان يقيس حِمل الجهاز لا الإلغاء", "what": "بعد طلب الإلغاء كان الاختبار ينام مدة ثابتة ثم يؤكد أن المهمة انتهت — فينجح أو يفشل حسب الجدولة. وقد وُسّعت المدة مرتين لويندوز عام 2023 وظل يتذبذب على macOS. صار ينتظر الراية التي تضعها المهمة نفسها." }
+    "repo": "qdrant/qdrant",
+    "pr": 10178,
+    "stars": 33921,
+    "lang": "Rust",
+    "status": "open",
+    "en": {
+      "title": "A flaky test that measured machine load, not cancellation",
+      "what": "After asking a task to cancel, the test slept a fixed budget and asserted it had finished — so it passed or failed on scheduling. The budget had been padded twice for Windows in 2023 and still flaked on macOS. Now it waits for the flag the task itself sets."
+    },
+    "ar": {
+      "title": "اختبار متذبذب كان يقيس حِمل الجهاز لا الإلغاء",
+      "what": "بعد طلب الإلغاء كان الاختبار ينام مدة ثابتة ثم يؤكد أن المهمة انتهت — فينجح أو يفشل حسب الجدولة. وقد وُسّعت المدة مرتين لويندوز عام 2023 وظل يتذبذب على macOS. صار ينتظر الراية التي تضعها المهمة نفسها."
+    }
   },
   {
-    "repo": "anchore/grype", "pr": 3643, "stars": 12700, "lang": "Go", "status": "open",
-    "en": { "title": "Amazon Linux false positives on backported packages", "what": "A hardcoded override stopped Amazon Linux from being treated as having a comprehensive feed, so the language-level duplicate was matched against upstream versions that cannot reflect the distribution's backporting." },
-    "ar": { "title": "نتائج إيجابية خاطئة في أمازون لينكس", "what": "تجاوز مثبّت في الشيفرة كان يمنع اعتبار تغذية أمازون شاملة، فتُطابَق النسخة المكررة على مستوى اللغة مع إصدارات لا تعكس ترقيعات التوزيعة." }
+    "repo": "anchore/grype",
+    "pr": 3643,
+    "stars": 12716,
+    "lang": "Go",
+    "status": "open",
+    "en": {
+      "title": "Amazon Linux false positives on backported packages",
+      "what": "A hardcoded override stopped Amazon Linux from being treated as having a comprehensive feed, so the language-level duplicate was matched against upstream versions that cannot reflect the distribution's backporting."
+    },
+    "ar": {
+      "title": "نتائج إيجابية خاطئة في أمازون لينكس",
+      "what": "تجاوز مثبّت في الشيفرة كان يمنع اعتبار تغذية أمازون شاملة، فتُطابَق النسخة المكررة على مستوى اللغة مع إصدارات لا تعكس ترقيعات التوزيعة."
+    }
   },
   {
-    "repo": "EmbarkStudios/cargo-deny", "pr": 887, "stars": 2400, "lang": "Rust", "status": "open",
-    "en": { "title": "False positive on renamed workspace dependencies", "what": "Cargo does not allow combining a workspace dependency with a package rename, so the lint flagged a shape that cannot be written any other way. The existing snapshot had pinned the buggy behaviour — traced the fixture by hand before updating it." },
-    "ar": { "title": "نتيجة خاطئة على الاعتماديات المعاد تسميتها", "what": "‏Cargo لا يسمح بجمع اعتمادية مشتركة مع إعادة تسمية، فكان الفحص يُبلّغ عن شكل لا يمكن كتابته بطريقة أخرى أصلاً. اللقطة الموجودة كانت تثبّت السلوك الخاطئ — تتبّعت الحالة يدوياً قبل تحديثها." }
+    "repo": "EmbarkStudios/cargo-deny",
+    "pr": 887,
+    "stars": 2398,
+    "lang": "Rust",
+    "status": "open",
+    "en": {
+      "title": "False positive on renamed workspace dependencies",
+      "what": "Cargo does not allow combining a workspace dependency with a package rename, so the lint flagged a shape that cannot be written any other way. The existing snapshot had pinned the buggy behaviour — traced the fixture by hand before updating it."
+    },
+    "ar": {
+      "title": "نتيجة خاطئة على الاعتماديات المعاد تسميتها",
+      "what": "‏Cargo لا يسمح بجمع اعتمادية مشتركة مع إعادة تسمية، فكان الفحص يُبلّغ عن شكل لا يمكن كتابته بطريقة أخرى أصلاً. اللقطة الموجودة كانت تثبّت السلوك الخاطئ — تتبّعت الحالة يدوياً قبل تحديثها."
+    }
   },
   {
-    "repo": "modelcontextprotocol/python-sdk", "pr": 3270, "stars": 23900, "lang": "Python", "status": "open",
-    "en": { "title": "An orphan routing header was accepted without its body param", "what": "The header check only ran when the body carried the matching parameter, so a present header with an absent parameter was never validated — while the sibling function already rejected the equivalent shape." },
-    "ar": { "title": "ترويسة توجيه يتيمة تُقبل بلا معاملها في الجسم", "what": "فحص الترويسة كان يعمل فقط حين يحمل الجسم المعامل المطابق، فالترويسة الموجودة مع معامل غائب لا يُتحقق منها إطلاقاً — بينما الدالة الشقيقة كانت ترفض الشكل المكافئ أصلاً." }
+    "repo": "modelcontextprotocol/python-sdk",
+    "pr": 3270,
+    "stars": 23979,
+    "lang": "Python",
+    "status": "open",
+    "en": {
+      "title": "An orphan routing header was accepted without its body param",
+      "what": "The header check only ran when the body carried the matching parameter, so a present header with an absent parameter was never validated — while the sibling function already rejected the equivalent shape."
+    },
+    "ar": {
+      "title": "ترويسة توجيه يتيمة تُقبل بلا معاملها في الجسم",
+      "what": "فحص الترويسة كان يعمل فقط حين يحمل الجسم المعامل المطابق، فالترويسة الموجودة مع معامل غائب لا يُتحقق منها إطلاقاً — بينما الدالة الشقيقة كانت ترفض الشكل المكافئ أصلاً."
+    }
   },
   {
-    "repo": "evilmartians/lefthook", "pr": 1485, "stars": 6500, "lang": "Go", "status": "open",
-    "en": { "title": "pre-push hard-failed with no local ref for the default branch", "what": "The fallback resolved against a ref that a fresh clone need not have. Now resolved against the remote-tracking ref instead." },
-    "ar": { "title": "خطاف ما قبل الدفع يفشل حين لا يوجد مرجع محلي للفرع الافتراضي", "what": "كان البديل يُحلّ على مرجع قد لا يملكه استنساخ حديث. صار يُحلّ على مرجع التتبع البعيد." }
+    "repo": "evilmartians/lefthook",
+    "pr": 1485,
+    "stars": 8635,
+    "lang": "Go",
+    "status": "open",
+    "en": {
+      "title": "pre-push hard-failed with no local ref for the default branch",
+      "what": "The fallback resolved against a ref that a fresh clone need not have. Now resolved against the remote-tracking ref instead."
+    },
+    "ar": {
+      "title": "خطاف ما قبل الدفع يفشل حين لا يوجد مرجع محلي للفرع الافتراضي",
+      "what": "كان البديل يُحلّ على مرجع قد لا يملكه استنساخ حديث. صار يُحلّ على مرجع التتبع البعيد."
+    }
   },
   {
-    "repo": "evilmartians/lefthook", "pr": 1486, "stars": 6500, "lang": "Go", "status": "open",
-    "en": { "title": "Slashes in a remote ref broke checkout every run", "what": "The ref name went straight into a directory name, so any ref containing a slash produced a path that never matched — forcing a full refetch on every invocation." },
-    "ar": { "title": "الشرطات في المرجع البعيد تكسر السحب في كل تشغيل", "what": "اسم المرجع كان يدخل مباشرة في اسم المجلد، فأي مرجع يحوي شرطة يُنتج مساراً لا يطابق شيئاً — فيُعاد الجلب كاملاً في كل مرة." }
+    "repo": "evilmartians/lefthook",
+    "pr": 1486,
+    "stars": 8635,
+    "lang": "Go",
+    "status": "open",
+    "en": {
+      "title": "Slashes in a remote ref broke checkout every run",
+      "what": "The ref name went straight into a directory name, so any ref containing a slash produced a path that never matched — forcing a full refetch on every invocation."
+    },
+    "ar": {
+      "title": "الشرطات في المرجع البعيد تكسر السحب في كل تشغيل",
+      "what": "اسم المرجع كان يدخل مباشرة في اسم المجلد، فأي مرجع يحوي شرطة يُنتج مساراً لا يطابق شيئاً — فيُعاد الجلب كاملاً في كل مرة."
+    }
   },
   {
-    "repo": "ajeetdsouza/zoxide", "pr": 1277, "stars": 38900, "lang": "Rust", "status": "open",
-    "en": { "title": "Windows UNC paths rejected as invalid", "what": "A network path was refused outright. A previous attempt had been withdrawn by its own author over a static-analysis gate rather than a correctness problem." },
-    "ar": { "title": "مسارات ويندوز الشبكية تُرفض كغير صالحة", "what": "كان المسار الشبكي يُرفض تماماً. ومحاولة سابقة سحبها صاحبها بسبب بوابة تحليل ساكن لا بسبب خلل في الصحة." }
+    "repo": "ajeetdsouza/zoxide",
+    "pr": 1277,
+    "stars": 38610,
+    "lang": "Rust",
+    "status": "open",
+    "en": {
+      "title": "Windows UNC paths rejected as invalid",
+      "what": "A network path was refused outright. A previous attempt had been withdrawn by its own author over a static-analysis gate rather than a correctness problem."
+    },
+    "ar": {
+      "title": "مسارات ويندوز الشبكية تُرفض كغير صالحة",
+      "what": "كان المسار الشبكي يُرفض تماماً. ومحاولة سابقة سحبها صاحبها بسبب بوابة تحليل ساكن لا بسبب خلل في الصحة."
+    }
   },
   {
-    "repo": "charmbracelet/glamour", "pr": 596, "stars": 3600, "lang": "Go", "status": "open",
-    "en": { "title": "Tilde never expanded in a style path from a config file", "what": "The shell expands the tilde before the program sees it, so the path worked as a flag and failed as a YAML value — nothing shell-expands a config string." },
-    "ar": { "title": "رمز المنزل لا يُوسَّع في مسار النمط القادم من ملف إعدادات", "what": "الصدفة توسّع الرمز قبل أن يراه البرنامج، فيعمل المسار كخيار سطر أوامر ويفشل كقيمة في ملف — لأن لا شيء يوسّع نصاً في الإعدادات." }
+    "repo": "charmbracelet/glamour",
+    "pr": 596,
+    "stars": 3640,
+    "lang": "Go",
+    "status": "open",
+    "en": {
+      "title": "Tilde never expanded in a style path from a config file",
+      "what": "The shell expands the tilde before the program sees it, so the path worked as a flag and failed as a YAML value — nothing shell-expands a config string."
+    },
+    "ar": {
+      "title": "رمز المنزل لا يُوسَّع في مسار النمط القادم من ملف إعدادات",
+      "what": "الصدفة توسّع الرمز قبل أن يراه البرنامج، فيعمل المسار كخيار سطر أوامر ويفشل كقيمة في ملف — لأن لا شيء يوسّع نصاً في الإعدادات."
+    }
   },
   {
-    "repo": "jesseduffield/lazydocker", "pr": 830, "stars": 46000, "lang": "Go", "status": "open",
-    "en": { "title": "Docker events stream dropped over an SSH context", "what": "The tunnel had no keepalives, so an idle connection was closed by the far end and the events stream ended with EOF." },
-    "ar": { "title": "تدفّق أحداث Docker ينقطع عبر اتصال SSH", "what": "النفق بلا نبضات إبقاء، فيُغلق الطرف البعيد الاتصال الخامل وينتهي تدفّق الأحداث بنهاية ملف." }
+    "repo": "jesseduffield/lazydocker",
+    "pr": 830,
+    "stars": 52393,
+    "lang": "Go",
+    "status": "open",
+    "en": {
+      "title": "Docker events stream dropped over an SSH context",
+      "what": "The tunnel had no keepalives, so an idle connection was closed by the far end and the events stream ended with EOF."
+    },
+    "ar": {
+      "title": "تدفّق أحداث Docker ينقطع عبر اتصال SSH",
+      "what": "النفق بلا نبضات إبقاء، فيُغلق الطرف البعيد الاتصال الخامل وينتهي تدفّق الأحداث بنهاية ملف."
+    }
   },
   {
-    "repo": "steel-dev/steel-browser", "pr": 301, "stars": 4800, "lang": "TypeScript", "status": "open",
-    "en": { "title": "A configuration resolver so session options stop being lost", "what": "Caller-supplied options were dropped in several paths. Introduced a single resolution layer rather than patching each call site." },
-    "ar": { "title": "طبقة حلّ للإعدادات تمنع ضياع خيارات الجلسة", "what": "خيارات المستدعي كانت تُهمل في عدة مسارات. أضفت طبقة حلّ واحدة بدل ترقيع كل موضع على حدة." }
+    "repo": "steel-dev/steel-browser",
+    "pr": 301,
+    "stars": 7465,
+    "lang": "TypeScript",
+    "status": "open",
+    "en": {
+      "title": "A configuration resolver so session options stop being lost",
+      "what": "Caller-supplied options were dropped in several paths. Introduced a single resolution layer rather than patching each call site."
+    },
+    "ar": {
+      "title": "طبقة حلّ للإعدادات تمنع ضياع خيارات الجلسة",
+      "what": "خيارات المستدعي كانت تُهمل في عدة مسارات. أضفت طبقة حلّ واحدة بدل ترقيع كل موضع على حدة."
+    }
   },
   {
-    "repo": "steel-dev/steel-browser", "pr": 300, "stars": 4800, "lang": "TypeScript", "status": "open",
-    "en": { "title": "A caller-supplied user data directory was ignored", "what": "The option was accepted and then never reached the session service." },
-    "ar": { "title": "مجلد بيانات المستخدم الذي يحدده المستدعي يُتجاهل", "what": "كان الخيار يُقبل ثم لا يصل إلى خدمة الجلسة إطلاقاً." }
+    "repo": "steel-dev/steel-browser",
+    "pr": 300,
+    "stars": 7465,
+    "lang": "TypeScript",
+    "status": "open",
+    "en": {
+      "title": "A caller-supplied user data directory was ignored",
+      "what": "The option was accepted and then never reached the session service."
+    },
+    "ar": {
+      "title": "مجلد بيانات المستخدم الذي يحدده المستدعي يُتجاهل",
+      "what": "كان الخيار يُقبل ثم لا يصل إلى خدمة الجلسة إطلاقاً."
+    }
   },
   {
-    "repo": "steel-dev/steel-browser", "pr": 299, "stars": 4800, "lang": "TypeScript", "status": "open",
-    "en": { "title": "The fullscreen option never reached the session service", "what": "Same class as the two above: an accepted option silently dropped between the API boundary and the service." },
-    "ar": { "title": "خيار ملء الشاشة لا يصل إلى خدمة الجلسة", "what": "من نفس فئة السابقين: خيار يُقبل ثم يسقط بصمت بين حدّ الواجهة والخدمة." }
+    "repo": "steel-dev/steel-browser",
+    "pr": 299,
+    "stars": 7465,
+    "lang": "TypeScript",
+    "status": "open",
+    "en": {
+      "title": "The fullscreen option never reached the session service",
+      "what": "Same class as the two above: an accepted option silently dropped between the API boundary and the service."
+    },
+    "ar": {
+      "title": "خيار ملء الشاشة لا يصل إلى خدمة الجلسة",
+      "what": "من نفس فئة السابقين: خيار يُقبل ثم يسقط بصمت بين حدّ الواجهة والخدمة."
+    }
   },
   {
-    "repo": "activist-org/activist", "pr": 2334, "stars": 720, "lang": "TypeScript", "status": "open",
-    "en": { "title": "Backend validation messages never reached the user", "what": "Field-keyed error arrays were dropped by the extractor. The maintainer then reported the generic toast persisting — which turned out to be a second cause: an edge request-size guard set below the backend's own limit was answering first, so the message could never be produced." },
-    "ar": { "title": "رسائل التحقق من الخادم لا تصل إلى المستخدم", "what": "مصفوفات الأخطاء المفهرسة بالحقل كانت تُهمل عند الاستخراج. ثم أبلغ المشرف باستمرار الرسالة العامة — وتبيّن سبب ثانٍ: حارس حجم الطلب عند الحافة مضبوط تحت حدّ الخادم نفسه فيجيب أولاً، فلا تُنتج الرسالة أصلاً." }
+    "repo": "activist-org/activist",
+    "pr": 2334,
+    "stars": 729,
+    "lang": "TypeScript",
+    "status": "open",
+    "en": {
+      "title": "Backend validation messages never reached the user",
+      "what": "Field-keyed error arrays were dropped by the extractor. The maintainer then reported the generic toast persisting — which turned out to be a second cause: an edge request-size guard set below the backend's own limit was answering first, so the message could never be produced."
+    },
+    "ar": {
+      "title": "رسائل التحقق من الخادم لا تصل إلى المستخدم",
+      "what": "مصفوفات الأخطاء المفهرسة بالحقل كانت تُهمل عند الاستخراج. ثم أبلغ المشرف باستمرار الرسالة العامة — وتبيّن سبب ثانٍ: حارس حجم الطلب عند الحافة مضبوط تحت حدّ الخادم نفسه فيجيب أولاً، فلا تُنتج الرسالة أصلاً."
+    }
   }
 ]

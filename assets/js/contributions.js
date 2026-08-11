@@ -16,8 +16,11 @@ function matches(c) {
 }
 
 function renderStats() {
-  const totalStars = state.items.reduce((n, c) => n + (c.stars || 0), 0);
   const repos = new Set(state.items.map((c) => c.repo));
+  // Count each project once. Summing per contribution counted a repository
+  // as many times as it has pull requests, which inflated the figure badly.
+  const byRepo = new Map(state.items.map((c) => [c.repo, c.stars || 0]));
+  const totalStars = [...byRepo.values()].reduce((n, s) => n + s, 0);
   const langs = new Set(state.items.map((c) => c.lang));
   const rows = [
     [state.items.length, t('stat.fixes')],
